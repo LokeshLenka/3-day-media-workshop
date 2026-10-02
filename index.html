@@ -207,7 +207,9 @@
     }
 
     @media (max-width:880px) {
-      .nav-links {
+
+      .nav-links,
+      .nav-cta {
         display: none
       }
     }
@@ -370,7 +372,7 @@
 
     .price {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 10px
     }
 
@@ -1701,13 +1703,10 @@
               <b>Free</b>
               <em>3-day series</em>
             </div>
-            <p class="card-note">Open to every SRKR student. <b>150 seats</b>, first come first served.</p>
+            <p class="card-note">Open to first-year students. <b>150 seats</b>, first come first served.</p>
           </div>
 
           <div class="card-body">
-            <a class="btn" href="#reserve">Reserve your seat</a>
-            <button class="btn btn-ghost" type="button"
-              onclick="document.getElementById('schedule').scrollIntoView()">See the daily plan</button>
 
             <ul class="days">
               <li>
@@ -1735,6 +1734,9 @@
                   <path d="M4 12.5 9.5 18 20 6.5" />
                 </svg>Project files &amp; cheat-sheet notes</li>
             </ul>
+
+            <button class="btn btn-ghost" type="button"
+              onclick="document.getElementById('schedule').scrollIntoView()">See the daily plan</button>
 
             <form class="rsvp" id="rsvpForm" novalidate>
 
@@ -2063,7 +2065,7 @@
             <ul>
               <li><span><b>Complete beginners</b> who have never opened an editing app</span></li>
               <li><span><b>Club members</b> preparing posters, reels and event coverage</span></li>
-              <li><span><b>Final-year students</b> building a portfolio before placements</span></li>
+              <li><span><b>First-year students</b> who want to start editing with the right habits</span></li>
               <li><span>Anyone who wants one session to <b>compare all three tools</b> side by side</span></li>
             </ul>
           </div>
@@ -2074,9 +2076,6 @@
               <li><span><b>Your laptop with that day's software already installed</b> — the download steps are inside
                   each session above</span></li>
               <li><span><b>Charger</b>, and the laptop charged — installs and caches need the room</span></li>
-              <li><span><b>Two photos and a 10-second clip</b> of your own to edit during the session</span></li>
-              <li><span>Lab systems are available if your laptop <b>can't run Resolve</b> — tell us while
-                  registering</span></li>
             </ul>
           </div>
         </div>
@@ -2136,13 +2135,19 @@
         if (reduce || !('IntersectionObserver' in window)) {
           tl.classList.add('is-live');
         } else {
+          // reveal only once the timeline is actually in view (top past 45%
+          // of the screen) — a low threshold let it finish off-screen while
+          // someone was still scrolling down to it
           var io = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
               if (e.isIntersecting) { tl.classList.add('is-live'); io.disconnect(); }
             });
-          }, { threshold: .3 });
+          }, { threshold: 0, rootMargin: '0px 0px -55% 0px' });
           io.observe(tl);
-          setTimeout(function () { tl.classList.add('is-live'); }, 4000);
+          // safety net: only force it once the top edge is at that same 45% line
+          setTimeout(function () {
+            if (tl.getBoundingClientRect().top < window.innerHeight * .45) tl.classList.add('is-live');
+          }, 5000);
         }
       }
 
