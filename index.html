@@ -392,8 +392,19 @@
 
     .card-note {
       font-size: 13.5px;
-      color: var(--muted);
-      margin-top: 6px
+      color: var(--ink);
+      font-weight: 600;
+      margin-top: 12px;
+      padding: 10px 13px;
+      background: var(--tint);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 5px 5px 0;
+      line-height: 1.45
+    }
+
+    .card-note b {
+      color: var(--blue);
+      font-weight: 800
     }
 
     .card-body {
@@ -1258,8 +1269,7 @@
       margin: 0;
       padding: 13px 18px 4px;
       font-size: 15px;
-      color: #3d454f;
-      max-width: 64ch
+      color: #3d454f
     }
 
     .acc-body .run-list {
@@ -1270,7 +1280,7 @@
 
     .run-row {
       display: grid;
-      grid-template-columns: 96px 66px minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) auto;
       gap: 6px 14px;
       padding: 12px 18px;
       border-top: 1px solid var(--rule);
@@ -1286,16 +1296,18 @@
       margin-top: 6px
     }
 
-    .run-time {
-      font-family: var(--mono);
-      font-size: 12.5px;
-      letter-spacing: .03em;
-      color: var(--ink);
-      padding-top: 3px;
+
+    .run-row .run-body {
+      grid-column: 1;
+      grid-row: 1
     }
 
     .run-dur {
-      justify-self: start;
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+      align-self: start;
+      margin-top: 2px;
       font-size: 12px;
       font-weight: 700;
       color: var(--blue-dark);
@@ -1316,44 +1328,10 @@
       font-weight: 700
     }
 
-    .run-out {
-      display: block;
-      font-style: normal;
-      color: var(--muted);
-      font-size: 13.5px;
-      margin-top: 2px;
-    }
 
-    .run-out b {
-      color: #3d454f;
-      font-weight: 700
-    }
 
-    .run-foot {
-      border-top: 1px solid var(--rule);
-      background: #fafbfc;
-      padding: 14px 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 10px;
-      align-items: center;
-    }
 
-    .run-foot b {
-      font-size: 14px;
-      font-weight: 700;
-      margin-right: 2px
-    }
 
-    .run-foot span {
-      font-size: 13px;
-      font-weight: 600;
-      color: #2c3540;
-      background: #fff;
-      border: 1px solid var(--rule-strong);
-      border-radius: 99px;
-      padding: 4px 11px;
-    }
 
     @media (max-width:640px) {
       summary {
@@ -1391,25 +1369,9 @@
       }
 
       .acc-body .run-list>li.run-row {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 5px 10px;
         padding: 12px 15px
-      }
-
-      .run-time {
-        padding-top: 0
-      }
-
-      .run-dur {
-        justify-self: end
-      }
-
-      .run-body {
-        grid-column: 1 / -1
-      }
-
-      .run-foot {
-        padding: 13px 15px
       }
     }
 
@@ -1714,9 +1676,9 @@
           <h1>Photoshop, CapCut &amp; DaVinci: a 3-day editing workshop</h1>
 
           <p class="hero-lede">
-            Three afternoons, three tools, one finished portfolio piece each day.
-            Retouch a photo, cut a reel, then colour-grade an edit — no prior
-            experience needed.
+            Three afternoons, three tools, one project you build together each
+            day. Retouch a photo, cut a reel, then colour-grade an edit — no
+            prior experience needed.
           </p>
 
           <div class="facts">
@@ -1739,11 +1701,11 @@
               <b>Free</b>
               <em>3-day series</em>
             </div>
-            <p class="card-note">Open to every SRKR student. 150 seats, first come first served.</p>
+            <p class="card-note">Open to every SRKR student. <b>150 seats</b>, first come first served.</p>
           </div>
 
           <div class="card-body">
-            <a class="btn" href="#rsvp-name">Reserve your seat</a>
+            <a class="btn" href="#reserve">Reserve your seat</a>
             <button class="btn btn-ghost" type="button"
               onclick="document.getElementById('schedule').scrollIntoView()">See the daily plan</button>
 
@@ -1755,7 +1717,7 @@
               </li>
               <li>
                 <span class="day-chip"><b>08</b><span>Thu</span></span>
-                <span class="day-name">CapCut<span>Fast cuts, captions &amp; reels</span></span>
+                <span class="day-name">CapCut<span>The art of the cut</span></span>
                 <span class="swatch sw-cc" aria-hidden="true"></span>
               </li>
               <li>
@@ -1772,12 +1734,6 @@
               <li><svg viewBox="0 0 24 24">
                   <path d="M4 12.5 9.5 18 20 6.5" />
                 </svg>Project files &amp; cheat-sheet notes</li>
-              <li><svg viewBox="0 0 24 24">
-                  <path d="M4 12.5 9.5 18 20 6.5" />
-                </svg>Participation certificate</li>
-              <li><svg viewBox="0 0 24 24">
-                  <path d="M4 12.5 9.5 18 20 6.5" />
-                </svg>Portfolio-ready output from each day</li>
             </ul>
 
             <form class="rsvp" id="rsvpForm" novalidate>
@@ -1801,7 +1757,7 @@
           leave
           each
           afternoon
-          with something finished.</p>
+          knowing exactly how that tool is used.</p>
 
         <div class="tl" id="tl">
           <div class="tl-row" aria-hidden="true">
@@ -1843,8 +1799,9 @@
     <section class="section" id="learn">
       <div class="wrap">
         <h2>What you'll learn</h2>
-        <p class="intro">By the end of the third session you'll have touched all three industry tools and built a small
-          set of finished edits.</p>
+        <p class="intro">By the end of the third session you'll have touched all three industry tools and worked through
+          a
+          small set of practice edits.</p>
 
         <div class="learn-box">
           <ul>
@@ -1854,8 +1811,8 @@
                 Photoshop</span></li>
             <li><svg viewBox="0 0 24 24">
                 <path d="M4 12.5 9.5 18 20 6.5" />
-              </svg><span>Turn raw clips into a paced <b>30-second reel</b> with captions, cuts and sound in
-                CapCut</span></li>
+              </svg><span>Read a shot, choose the cut and set the pace — the craft behind <b>every CapCut
+                  edit</b></span></li>
             <li><svg viewBox="0 0 24 24">
                 <path d="M4 12.5 9.5 18 20 6.5" />
               </svg><span>Turn <b>ordinary footage into something that looks like cinema</b> — balance, grade and finish
@@ -1899,21 +1856,18 @@
                 <div class="check-bar" role="progressbar" aria-label="Photoshop prerequisites completed"
                   aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
                 <ul class="check-list">
-                  <li><label><input type="checkbox"><span><b>Download Photoshop</b> — <a
+                  <li><label><input type="checkbox"><span><b>Install Photoshop</b> — <a
                           href="https://www.adobe.com/products/photoshop.html" target="_blank"
-                          rel="noopener">adobe.com/products/photoshop</a> → Free trial → install the <b>Creative
-                          Cloud</b> app → install Photoshop from it (any browser: Chrome, Safari, Edge)</span></label>
-                  </li>
-                  <li><label><input type="checkbox"><span><b>Open Photoshop once</b> and sign in, so first-run setup
-                        finishes before class</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Bring two photos</b> — a portrait to retouch and something
-                        to build a poster around</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Laptop charged + charger</b> — lab systems are available if
-                        yours can't run it</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Watch</b> a <a
-                          href="https://www.youtube.com/results?search_query=photoshop+for+complete+beginners+interface+tour"
-                          target="_blank" rel="noopener">beginner interface tour on YouTube</a> — 10 minutes is
-                        enough</span></label></li>
+                          rel="noopener noreferrer">Download here</a>.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Test the software</b> — Sign in and open
+                        Photoshop.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Laptop + charger</b> — Bring your own
+                        device.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Bring two images</b> — A portrait and a poster
+                        reference.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Installation help</b> — <a
+                          href="https://www.youtube.com/results?search_query=Photoshop+beginner+installation+tutorial"
+                          target="_blank" rel="noopener noreferrer">View a tutorial</a> if needed.</span></label></li>
                 </ul>
               </div>
 
@@ -1924,14 +1878,16 @@
                 <li>Remove distractions with healing, then dodge and burn</li>
                 <li>Add type and export a poster-sized graphic</li>
               </ul>
-              <p class="takeaway"><b>You leave with:</b> a retouched photo and a finished poster for your feed.</p>
+              <p class="takeaway"><b>You leave with:</b> the steps to retouch a photo and lay out a poster for your
+                feed.</p>
             </div>
           </details>
 
           <details>
             <summary>
               <span class="sum-day"><b>08</b>THU</span>
-              <span class="sum-title">CapCut — cut, caption, publish<span>Thursday, October 8 · 3:30–4:30 PM · 1
+              <span class="sum-title">CapCut — beyond the cut: the art of editing<span>Thursday, October 8 · 3:30–4:30
+                  PM · 1
                   hr</span></span>
               <span class="chev" aria-hidden="true"></span>
             </summary>
@@ -1939,35 +1895,85 @@
               <div class="check" data-tool="cc" data-key="capcut">
                 <div class="check-head">
                   <span class="check-title">Prerequisites — tick them off before Thursday</span>
-                  <span class="check-count">0 / 5</span>
+                  <span class="check-count">0 / 7</span>
                 </div>
                 <div class="check-bar" role="progressbar" aria-label="CapCut prerequisites completed" aria-valuemin="0"
                   aria-valuemax="100" aria-valuenow="0"><i></i></div>
                 <ul class="check-list">
-                  <li><label><input type="checkbox"><span><b>Download CapCut</b> — <a href="https://www.capcut.com/"
-                          target="_blank" rel="noopener">capcut.com</a> → Download for Windows/macOS, or install the app
-                        from the Play Store / App Store</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Open it once</b> and sign in, so the editor loads straight
-                        away in class</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Bring a 10-second clip</b> shot vertically on your phone —
-                        that's your raw footage</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Device charged + charger</b> — laptop or phone, whichever
-                        you'll edit on</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Watch</b> a <a
-                          href="https://www.youtube.com/results?search_query=capcut+desktop+tutorial+for+beginners"
-                          target="_blank" rel="noopener">beginner CapCut tutorial on YouTube</a> — skim the timeline and
-                        captions parts</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Install CapCut</b> — Android: <a
+                          href="https://drive.google.com/file/d/1lGKliAGGbkjPeoVoDIYoU0O__dl0sDbn/view?usp=drivesdk"
+                          target="_blank" rel="noopener noreferrer">Download APK</a>; iOS: App Store (Australia
+                        region).</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Connect VPN</b> — Super VPN is needed to access CapCut
+                        in India.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Open CapCut once</b> — Verify it works before the
+                        workshop.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Free 2–3 GB storage</b> — For the app and
+                        footage.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Device + earphones</b> — Charge your phone or
+                        laptop.</span></label></li>
                 </ul>
               </div>
 
-              <p class="sub-head">What the hour covers</p>
-              <ul>
-                <li>Import footage and find the rhythm of a cut</li>
-                <li>Auto-captions, transitions and clean audio levels</li>
-                <li>Speed ramps, b-roll and simple effects without the clutter</li>
-                <li>Export vertical video that doesn't get re-compressed</li>
-              </ul>
-              <p class="takeaway"><b>You leave with:</b> a 30-second reel ready to post.</p>
+              <div class="run">
+                <div class="run-head">
+                  <b>Run of show — what we cover</b>
+                  <span>60 MIN · 3:30 → 4:30 PM</span>
+                </div>
+                <p class="run-lede">This is not a CapCut tools tutorial: the craft of editing first, the software
+                  second.
+                  No prior experience needed and the raw footage is provided — here's how the hour is spent and how long
+                  each block takes.</p>
+                <ol class="run-list">
+                  <li class="run-row">
+                    <span class="run-dur">5 min</span>
+                    <span class="run-body"><b>Introduction</b> — what editing is, and why it matters before any tool
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-dur">7 min</span>
+                    <span class="run-body"><b>Understanding the shot</b> — wide, medium and close-up, B-roll, and how
+                      shot selection shapes meaning
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-dur">10 min</span>
+                    <span class="run-body"><b>The art of the cut</b> — when and why to cut — continuity, jump cuts,
+                      cutting on action, match cuts
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-dur">8 min</span>
+                    <span class="run-body"><b>Pacing &amp; rhythm</b> — fast vs slow, beat-based cuts, anticipation,
+                      energy and pauses
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-dur">7 min</span>
+                    <span class="run-body"><b>Sound &amp; emotion</b> — music, sound effects, ambience, dialogue and
+                      silence
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-dur">5 min</span>
+                    <span class="run-body"><b>Visual mood</b> — exposure, contrast and consistency — correction for the
+                      story, not filters
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-dur">13 min</span>
+                    <span class="run-body"><b>Live CapCut edit</b> — timeline, split/trim, speed, keyframes, text,
+                      captions, transitions, export
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-dur">5 min</span>
+                    <span class="run-body"><b>Wrap-up</b> — the key principles and where to practise them next
+                    </span>
+                  </li>
+                </ol>
+              </div>
+
             </div>
           </details>
 
@@ -1987,18 +1993,16 @@
                 <div class="check-bar" role="progressbar" aria-label="DaVinci Resolve prerequisites completed"
                   aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
                 <ul class="check-list">
-                  <li><label><input type="checkbox"><span><b>Laptop + charger — required</b> — the session runs entirely
-                        on your machine; say "need a lab system" while registering if yours can't run
-                        Resolve</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Download Resolve 20</b> — <a
+                  <li><label><input type="checkbox"><span><b>Laptop + charger</b> — required for the
+                        workshop.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Download DaVinci Resolve 20</b> — <a
                           href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank"
-                          rel="noopener">blackmagicdesign.com/products/davinciresolve</a> → Free Download → pick Windows
-                        / macOS / Linux (the site may ask your name and email first)</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Install and open it once</b> — about 2 GB, so do it the day
-                        before; 8 GB RAM is the practical minimum</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Watch this tutorial first</b> — <a
-                          href="https://youtu.be/RyDccfmetfI" target="_blank" rel="noopener">youtu.be/RyDccfmetfI</a> —
-                        just enough to recognise the seven pages</span></label></li>
+                          rel="noopener noreferrer">Official download page</a>.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Install and test</b> — Open the software before the
+                        workshop.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Installation help</b> — Refer to this <a
+                          href="https://youtu.be/RyDccfmetfI" target="_blank" rel="noopener noreferrer">download
+                          tutorial</a> if needed.</span></label></li>
                 </ul>
               </div>
 
@@ -2011,55 +2015,36 @@
                   is shown hands-on and timed — here's the route through the software and how long it takes.</p>
                 <ol class="run-list">
                   <li class="run-row">
-                    <span class="run-time">3:30–3:40</span>
                     <span class="run-dur">10 min</span>
                     <span class="run-body"><b>Media + Cut pages</b> — import, sort into bins, rough assembly
-                      <span class="run-out"><b>Demo:</b> an organised project with a first cut on the timeline</span>
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-time">3:40–3:55</span>
                     <span class="run-dur">15 min</span>
                     <span class="run-body"><b>Edit page</b> — trims, keyframes, titles
-                      <span class="run-out"><b>Demo:</b> a tightened edit with an opening title</span>
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-time">3:55–4:02</span>
                     <span class="run-dur">7 min</span>
                     <span class="run-body"><b>Fusion page</b> — a simple motion graphic
-                      <span class="run-out"><b>Demo:</b> one animated lower-third or transition</span>
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-time">4:02–4:20</span>
                     <span class="run-dur">18 min</span>
                     <span class="run-body"><b>Color page</b> — balance, curves, nodes, the filmic grade
-                      <span class="run-out"><b>Demo:</b> matched clips and a saved grade node</span>
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-time">4:20–4:26</span>
                     <span class="run-dur">6 min</span>
                     <span class="run-body"><b>Fairlight page</b> — dialogue levels and music
-                      <span class="run-out"><b>Demo:</b> a clean mix that doesn't clip</span>
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-time">4:26–4:30</span>
                     <span class="run-dur">4 min</span>
                     <span class="run-body"><b>Deliver page</b> — render presets
-                      <span class="run-out"><b>Demo:</b> the final MP4, exported and ready to post</span>
                     </span>
                   </li>
                 </ol>
-                <div class="run-foot">
-                  <b>What the demo leaves you with</b>
-                  <span>Graded video (MP4)</span>
-                  <span>Resolve project file</span>
-                  <span>Saved grade node</span>
-                  <span>Export cheat sheet</span>
-                </div>
               </div>
             </div>
           </details>
@@ -2197,7 +2182,7 @@
           var box = document.createElement('div');
           box.className = 'rsvp-done';
           box.setAttribute('role', 'status');
-          box.innerHTML = '<b>Seat held for ' + first.replace(/[<>&]/g, '') + '</b>We\'ll send the room number and prep checklist to ' + email.replace(/[<>&]/g, '') + ' before Oct 7.';
+          box.innerHTML = '<b>Seat held</b>We\'ll send the room number and prep checklist to ' + email.replace(/[<>&]/g, '') + ' before Oct 7.';
           form.replaceWith(box);
         });
       }
