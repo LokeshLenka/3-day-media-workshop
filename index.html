@@ -1,1095 +1,2208 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Photoshop, CapCut &amp; DaVinci — 3-Day Editing Workshop | Content &amp; Media Club</title>
-<meta name="description" content="A free 3-day hands-on editing workshop at SRKR: Photoshop on Oct 7, CapCut on Oct 8, DaVinci Resolve on Oct 9. Every day, 3:30–4:30 PM.">
-<script>document.documentElement.classList.add('js');</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#ffffff;
-    --ink:#12151a;
-    --muted:#5b6472;
-    --rule:#e3e7ec;
-    --rule-strong:#c9d0d9;
-    --stage:#111419;
-    --stage-2:#1a1f27;
-    --stage-rule:#2b323c;
-    --blue:#1f6feb;
-    --blue-dark:#1554bd;
-    --ps:#31a8ff;
-    --cc:#edeff3;
-    --dv:#9b87f5;
-    --amber:#f5a623;
-    --radius:6px;
-    --wrap:1180px;
-    --font:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
-  }
-
-  *,*::before,*::after{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  html:focus-within{scroll-behavior:smooth}
-  body{
-    margin:0;
-    font-family:var(--font);
-    font-size:16.5px;
-    line-height:1.6;
-    color:var(--ink);
-    background:var(--paper);
-    -webkit-font-smoothing:antialiased;
-  }
-  img,svg{display:block;max-width:100%}
-  a{color:var(--blue-dark);text-decoration-thickness:1px;text-underline-offset:2px}
-  a:hover{color:var(--blue)}
-  h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-.02em}
-  p{margin:0}
-  button,input{font:inherit}
-  :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
-  .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:22px}
-  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-
-  /* ---------- nav ---------- */
-  .nav{
-    position:sticky;top:0;z-index:50;
-    background:rgba(255,255,255,.94);
-    backdrop-filter:saturate(160%) blur(8px);
-    border-bottom:1px solid var(--rule);
-  }
-  .nav-in{display:flex;align-items:center;gap:20px;height:62px}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);margin-right:auto}
-  .brand-mark{
-    width:30px;height:30px;flex:none;border-radius:5px;
-    background:var(--stage);display:grid;place-items:center;
-  }
-  .brand-mark svg{width:13px;height:13px}
-  .brand-text{display:flex;flex-direction:column;line-height:1.05}
-  .brand-text b{font-size:14.5px;font-weight:700;letter-spacing:-.01em}
-  .brand-text span{font-size:11.5px;color:var(--muted);font-weight:500}
-  .nav-links{display:flex;gap:26px;align-items:center}
-  .nav-links a{
-    font-size:14.5px;font-weight:500;color:var(--ink);text-decoration:none;
-    padding:4px 0;border-bottom:2px solid transparent;
-  }
-  .nav-links a:hover{border-bottom-color:var(--ink)}
-  .nav-cta{
-    font-size:14.5px;font-weight:600;text-decoration:none;
-    background:var(--blue);color:#fff;padding:9px 16px;border-radius:var(--radius);
-    border:1px solid var(--blue);white-space:nowrap;
-  }
-  .nav-cta:hover{background:var(--blue-dark);border-color:var(--blue-dark);color:#fff}
-  @media (max-width:880px){
-    .nav-links{display:none}
-  }
-
-  /* ---------- hero ---------- */
-  .hero{padding:44px 0 56px;border-bottom:1px solid var(--rule)}
-  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 344px;gap:52px;align-items:start}
-  .crumbs{font-size:13.5px;color:var(--muted);margin-bottom:18px}
-  .crumbs a{color:var(--muted);text-decoration:none}
-  .crumbs a:hover{color:var(--blue-dark);text-decoration:underline}
-  .crumbs span{margin:0 7px;color:var(--rule-strong)}
-  .hero h1{
-    font-size:clamp(34px,5vw,54px);
-    font-weight:800;
-    letter-spacing:-.032em;
-    max-width:16ch;
-  }
-  .hero-lede{
-    margin-top:18px;max-width:56ch;
-    font-size:clamp(16.5px,1.6vw,19px);
-    color:#333a44;
-  }
-  .facts{
-    display:flex;flex-wrap:wrap;align-items:center;gap:8px 0;
-    margin-top:22px;font-size:14.5px;color:var(--muted);font-weight:500;
-  }
-  .facts b{color:var(--ink);font-weight:700}
-  .facts i{font-style:normal;color:var(--rule-strong);padding:0 12px}
-  .rating{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14.5px;color:var(--muted)}
-  .rating b{color:var(--ink);font-size:16px;font-weight:800}
-  .dot-avatars{display:flex}
-  .dot-avatars span{
-    width:22px;height:22px;border-radius:50%;border:2px solid #fff;margin-left:-7px;
-    background:linear-gradient(135deg,var(--ps),var(--dv));
-  }
-  .dot-avatars span:first-child{margin-left:0;background:linear-gradient(135deg,var(--blue),var(--ps))}
-  .dot-avatars span:nth-child(2){background:linear-gradient(135deg,#111,#6b7280)}
-
-  /* player */
-  .player{
-    position:relative;margin-top:30px;aspect-ratio:16/9;
-    background:
-      radial-gradient(120% 140% at 12% 0%, #233042 0%, transparent 55%),
-      radial-gradient(100% 120% at 95% 100%, #2a2140 0%, transparent 50%),
-      var(--stage);
-    border-radius:8px;overflow:hidden;
-    border:1px solid var(--stage-rule);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:22px;padding-bottom:46px;cursor:pointer;
-  }
-  .player-title{
-    position:absolute;top:18px;left:20px;
-    font-family:var(--mono);font-size:12px;letter-spacing:.14em;
-    color:#9fb2c9;text-transform:uppercase;
-  }
-  .player-date{
-    text-align:center;color:#fff;font-weight:800;
-    font-size:clamp(28px,4.6vw,48px);letter-spacing:-.03em;line-height:1;
-    pointer-events:none;
-  }
-  .player-date small{
-    display:block;font-size:clamp(11px,1.3vw,14px);font-weight:600;
-    letter-spacing:.2em;color:#8ea6c2;margin-top:11px;text-transform:uppercase;
-  }
-  .play-btn{
-    width:60px;height:60px;border-radius:50%;
-    background:rgba(255,255,255,.94);border:0;display:grid;place-items:center;
-    cursor:pointer;transition:transform .18s ease, background .18s ease;
-    box-shadow:0 8px 30px rgba(0,0,0,.35);
-  }
-  .play-btn:hover{transform:scale(1.06);background:#fff}
-  .play-btn svg{width:22px;height:22px;margin-left:3px;fill:var(--stage)}
-  .play-btn.is-playing svg{margin-left:0}
-  .player-bar{
-    position:absolute;left:0;right:0;bottom:0;padding:14px 18px 16px;
-    background:linear-gradient(transparent,rgba(0,0,0,.72));
-  }
-  .scrub{position:relative;height:5px;border-radius:3px;background:rgba(255,255,255,.22);overflow:hidden;display:flex}
-  .scrub span{height:100%}
-  .scrub .s1{width:34%;background:var(--ps)}
-  .scrub .s2{width:33%;background:var(--cc)}
-  .scrub .s3{width:33%;background:var(--dv)}
-  .scrub-fill{
-    position:absolute;inset:0 auto 0 0;width:0;background:rgba(255,255,255,.85);
-    mix-blend-mode:overlay;
-  }
-  .player.is-playing .scrub-fill{animation:scrub 7s linear forwards}
-  @keyframes scrub{from{width:0}to{width:100%}}
-  .player-meta{
-    display:flex;justify-content:space-between;margin-top:9px;
-    font-family:var(--mono);font-size:11.5px;color:#d7dee8;letter-spacing:.06em;
-  }
-  .player-tools{display:flex;gap:6px}
-  .player-tools i{width:16px;height:3px;border-radius:2px;display:block}
-
-  /* ---------- enrollment card ---------- */
-  .card{
-    border:1px solid var(--rule-strong);border-radius:8px;background:#fff;
-    overflow:hidden;position:sticky;top:82px;
-    box-shadow:0 2px 14px rgba(17,20,25,.07);
-  }
-  .card-top{padding:22px 22px 20px;border-bottom:1px solid var(--rule)}
-  .price{display:flex;align-items:baseline;gap:10px}
-  .price b{font-size:34px;font-weight:800;letter-spacing:-.03em}
-  .price em{font-style:normal;font-size:13px;font-weight:700;color:#0e7a3c;background:#e8f7ee;padding:3px 8px;border-radius:4px}
-  .card-note{font-size:13.5px;color:var(--muted);margin-top:6px}
-  .card-body{padding:20px 22px 22px}
-  .btn{
-    display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
-    background:var(--blue);color:#fff;border:1px solid var(--blue);
-    font-weight:700;font-size:16px;padding:13px 18px;border-radius:var(--radius);
-    cursor:pointer;text-decoration:none;transition:background .15s ease;
-  }
-  .btn:hover{background:var(--blue-dark);border-color:var(--blue-dark);color:#fff}
-  .btn-ghost{
-    background:#fff;color:var(--ink);border:1px solid var(--ink);margin-top:10px;
-  }
-  .btn-ghost:hover{background:var(--ink);color:#fff}
-  .days{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--rule)}
-  .days li{
-    display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;
-    padding:11px 0;border-bottom:1px solid var(--rule);
-  }
-  .day-chip{
-    text-align:center;border:1px solid var(--rule-strong);border-radius:5px;
-    padding:3px 0;line-height:1.15;
-  }
-  .day-chip b{display:block;font-size:15px;font-weight:800}
-  .day-chip span{font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
-  .day-name{font-size:14.5px;font-weight:600;line-height:1.3}
-  .day-name span{display:block;font-weight:500;color:var(--muted);font-size:12.5px;margin-top:1px}
-  .swatch{width:10px;height:34px;border-radius:3px}
-  .sw-ps{background:var(--ps)}
-  .sw-cc{background:#111}
-  .sw-dv{background:var(--dv)}
-  .includes{list-style:none;margin:16px 0 0;padding:0;font-size:14px;color:#3d454f}
-  .includes li{display:flex;gap:9px;align-items:flex-start;padding:4px 0}
-  .includes svg{width:15px;height:15px;flex:none;margin-top:4px;stroke:var(--blue);fill:none;stroke-width:2.4}
-  .rsvp{margin-top:18px;border-top:1px dashed var(--rule-strong);padding-top:16px}
-  .rsvp label{display:block;font-size:13px;font-weight:600;margin-bottom:5px}
-  .rsvp input{
-    width:100%;padding:10px 12px;border:1px solid var(--rule-strong);border-radius:var(--radius);
-    font-size:15px;margin-bottom:11px;background:#fbfcfd;
-  }
-  .rsvp input:hover{border-color:#9aa4b1}
-  .rsvp .fine{font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center}
-  .rsvp-done{
-    background:#f0f8f3;border:1px solid #bfe5cf;border-radius:var(--radius);
-    padding:14px 15px;font-size:14.5px;color:#14532d;
-  }
-  .rsvp-done b{display:block;font-size:15.5px;margin-bottom:3px}
-
-  /* ---------- stage / timeline ---------- */
-  .stage{background:var(--stage);color:#e8edf4;padding:70px 0 74px}
-  .stage h2{
-    font-size:clamp(27px,3.4vw,40px);font-weight:800;color:#fff;letter-spacing:-.03em;
-    max-width:18ch;
-  }
-  .stage .sub{margin-top:12px;color:#9aa8ba;max-width:58ch;font-size:16.5px}
-  .tl{margin-top:44px;position:relative}
-  .tl-row{display:grid;grid-template-columns:140px minmax(0,1fr);gap:18px;align-items:center}
-  .tl-row + .tl-row{margin-top:14px}
-  .ruler{
-    display:flex;justify-content:space-between;
-    font-family:var(--mono);font-size:11.5px;color:#7c8ba0;letter-spacing:.06em;
-    border-bottom:1px solid var(--stage-rule);padding-bottom:8px;margin-bottom:16px;
-  }
-  .tl-head{text-align:right;line-height:1.25}
-  .tl-head b{display:block;font-size:15px;color:#fff;font-weight:700}
-  .tl-head span{font-size:12.5px;color:#8593a6;font-family:var(--mono);letter-spacing:.05em}
-  .lane{position:relative;height:66px;background:var(--stage-2);border-radius:6px;overflow:hidden}
-  .lane::after{
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background:repeating-linear-gradient(90deg,transparent 0 79px,rgba(255,255,255,.05) 79px 80px);
-  }
-  .clip{
-    position:absolute;inset:6px auto 6px 6px;width:calc(100% - 12px);
-    border-radius:5px;display:flex;align-items:center;gap:14px;
-    padding:0 18px;overflow:hidden;
-  }
-  .js .clip{clip-path:inset(0 100% 0 0)}
-  .is-live .clip{animation:reveal .85s cubic-bezier(.22,.75,.3,1) forwards}
-  .is-live .tl-row:nth-of-type(2) .clip{animation-delay:.1s}
-  .is-live .tl-row:nth-of-type(3) .clip{animation-delay:.22s}
-  .is-live .tl-row:nth-of-type(4) .clip{animation-delay:.34s}
-  @keyframes reveal{to{clip-path:inset(0 0 0 0)}}
-  .clip b{font-size:clamp(17px,2.2vw,23px);font-weight:800;letter-spacing:-.02em}
-  .clip small{
-    font-family:var(--mono);font-size:12px;letter-spacing:.06em;opacity:.75;margin-left:auto;
-    white-space:nowrap;
-  }
-  .clip-ps{background:linear-gradient(90deg,#0d63c9,#31a8ff);color:#04121f}
-  .clip-cc{background:linear-gradient(90deg,#dfe3ea,#ffffff);color:#12151a}
-  .clip-dv{background:linear-gradient(90deg,#6f5ae0,#9b87f5);color:#120b2e}
-  .clip-cc small,.clip-ps small,.clip-dv small{opacity:.7}
-  .playhead{
-    position:absolute;top:34px;bottom:-6px;left:140px;width:2px;background:var(--amber);
-    opacity:.5;pointer-events:none;
-  }
-  .js .playhead{opacity:0}
-  .playhead::before{
-    content:"";position:absolute;top:-6px;left:-5px;width:12px;height:12px;
-    background:var(--amber);border-radius:2px;
-  }
-  .is-live .playhead{animation:sweep 2.1s cubic-bezier(.5,0,.2,1) .35s forwards}
-  @keyframes sweep{
-    0%{opacity:1;transform:translateX(0)}
-    85%{opacity:1}
-    100%{opacity:0;transform:translateX(calc(100cqw - 142px))}
-  }
-  .tl{container-type:inline-size}
-  .stage-foot{
-    display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;
-    font-size:14.5px;color:#9aa8ba;
-  }
-  .stage-foot b{color:#fff;font-weight:700}
-  @media (max-width:760px){
-    .tl-row{grid-template-columns:1fr;gap:8px}
-    .tl-head{text-align:left;display:flex;align-items:baseline;gap:10px}
-    .tl-head b,.tl-head span{display:inline}
-    .ruler{display:none}
-    .playhead{left:0}
-    @keyframes sweep{
-      0%{opacity:1;transform:translateX(0)}
-      85%{opacity:1}
-      100%{opacity:0;transform:translateX(calc(100cqw - 2px))}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photoshop, CapCut &amp; DaVinci — 3-Day Editing Workshop | Content &amp; Media Club</title>
+  <meta name="description"
+    content="A free 3-day hands-on editing workshop at SRKR: Photoshop on Oct 7, CapCut on Oct 8, DaVinci Resolve on Oct 9. Every day, 3:30–4:30 PM.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #ffffff;
+      --ink: #2b3d4f;
+      --muted: #5e6e7d;
+      --rule: #e7e7e7;
+      --rule-strong: #d9d9d9;
+      --stage: #110c2d;
+      --stage-2: #1c1940;
+      --stage-rule: #332f66;
+      --blue: #890c25;
+      --blue-dark: #6b0a1c;
+      --ps: #31a8ff;
+      --cc: #edeff3;
+      --dv: #9b87f5;
+      --amber: #f4282d;
+      --tint: #fdf4f6;
+      --tint-rule: #f0d3da;
+      --radius: 6px;
+      --wrap: 1180px;
+      --font: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
     }
-    .lane{height:74px}
-    .clip{flex-wrap:wrap;gap:4px 12px;align-content:center;padding:0 14px}
-    .clip small{margin-left:0;width:100%}
-  }
 
-  /* ---------- learn ---------- */
-  .section{padding:64px 0}
-  .section + .section{border-top:1px solid var(--rule)}
-  .section h2{font-size:clamp(24px,3vw,33px);font-weight:800;letter-spacing:-.03em}
-  .section .intro{margin-top:12px;color:var(--muted);max-width:62ch}
-  .learn-box{
-    margin-top:30px;border:1px solid var(--rule-strong);border-radius:8px;
-    padding:30px 32px;
-    display:grid;grid-template-columns:1fr 1fr;gap:16px 40px;
-  }
-  .learn-box li{
-    list-style:none;display:flex;gap:12px;align-items:flex-start;
-    font-size:16.5px;line-height:1.5;
-  }
-  .learn-box ul{margin:0;padding:0;display:contents}
-  .learn-box svg{width:17px;height:17px;flex:none;margin-top:5px;stroke:var(--blue);fill:none;stroke-width:2.6}
-  .learn-box b{font-weight:700}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
 
-  /* ---------- schedule details ---------- */
-  .acc{margin-top:28px;border-top:1px solid var(--rule)}
-  details{border-bottom:1px solid var(--rule)}
-  summary{
-    list-style:none;cursor:pointer;padding:20px 4px;
-    display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;
-  }
-  summary::-webkit-details-marker{display:none}
-  summary:hover .sum-title{color:var(--blue-dark)}
-  .sum-day{
-    font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;
-    line-height:1.3;text-align:center;border:1px solid var(--rule-strong);
-    border-radius:5px;padding:5px 0;
-  }
-  .sum-day b{display:block;font-family:var(--font);font-size:17px;color:var(--ink);font-weight:800}
-  .sum-title{font-size:18.5px;font-weight:700;letter-spacing:-.01em;transition:color .15s}
-  .sum-title span{display:block;font-size:14px;font-weight:500;color:var(--muted);margin-top:3px}
-  .chev{
-    width:34px;height:34px;border:1px solid var(--rule-strong);border-radius:50%;
-    display:grid;place-items:center;transition:transform .2s ease,background .2s;
-  }
-  .chev::before{
-    content:"";width:9px;height:9px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);
-    transform:rotate(45deg) translate(-2px,-2px);
-  }
-  details[open] .chev{transform:rotate(180deg);background:#f2f5f9}
-  .acc-body{padding:0 4px 26px 100px;max-width:74ch}
-  .acc-body ul{margin:0;padding-left:19px;color:#3d454f}
-  .acc-body li{padding:3px 0}
-  .takeaway{
-    margin-top:16px;padding:12px 15px;background:#f3f7fd;border-left:3px solid var(--blue);
-    font-size:15px;border-radius:0 5px 5px 0;
-  }
-  .takeaway b{font-weight:700}
-  .sub-head{
-    margin:24px 0 4px;font-size:14px;font-weight:700;color:var(--ink);
-    display:flex;align-items:center;gap:12px;
-  }
-  .sub-head::after{content:"";flex:1;height:1px;background:var(--rule)}
+    html {
+      -webkit-text-size-adjust: 100%
+    }
 
-  /* prerequisites checklist */
-  .check{
-    margin-top:18px;border:1px solid var(--rule-strong);border-radius:8px;
-    background:#fafbfc;overflow:hidden;
-  }
-  .check-head{
-    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
-    padding:15px 18px 11px;
-  }
-  .check-title{font-size:15.5px;font-weight:700}
-  .check-count{
-    font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:var(--muted);
-    white-space:nowrap;
-  }
-  .check.done .check-count{color:#0e7a3c}
-  .check-bar{
-    height:8px;margin:0 18px 8px;background:#e7ecf2;border-radius:99px;overflow:hidden;
-  }
-  .check-bar i{
-    display:block;height:100%;width:0;border-radius:99px;
-    background:linear-gradient(90deg,var(--blue-dark),var(--blue));
-    transition:width .4s cubic-bezier(.4,0,.2,1);
-  }
-  .check[data-tool="ps"] .check-bar i{background:linear-gradient(90deg,#0d63c9,#31a8ff)}
-  .check[data-tool="cc"] .check-bar i{background:linear-gradient(90deg,#3d454f,#111419)}
-  .check[data-tool="dv"] .check-bar i{background:linear-gradient(90deg,#6f5ae0,#9b87f5)}
-  .acc-body .check-list{list-style:none;margin:0;padding:4px 18px 15px}
-  .acc-body .check-list li{padding:0}
-  .check-list label{
-    display:grid;grid-template-columns:auto minmax(0,1fr);gap:11px;align-items:start;
-    padding:7px 0;font-size:14.5px;line-height:1.5;color:#3d454f;cursor:pointer;
-  }
-  .check-list label:has(input:checked) span{opacity:.55}
-  .check-list b{color:var(--ink);font-weight:700}
-  .check-list a{font-weight:600;overflow-wrap:anywhere}
-  .check-list input{
-    appearance:none;-webkit-appearance:none;margin:4px 0 0;width:17px;height:17px;flex:none;
-    border:1.5px solid var(--rule-strong);border-radius:4px;background:#fff;
-    cursor:pointer;position:relative;transition:background .15s,border-color .15s;
-  }
-  .check-list input:hover{border-color:#8b96a4}
-  .check-list input:checked{background:var(--blue);border-color:var(--blue)}
-  .check[data-tool="ps"] input:checked{background:#0d8fe0;border-color:#0d8fe0}
-  .check[data-tool="cc"] input:checked{background:#111419;border-color:#111419}
-  .check[data-tool="dv"] input:checked{background:#7a63ea;border-color:#7a63ea}
-  .check-list input::after{
-    content:"";position:absolute;left:5px;top:1.5px;width:4px;height:8px;
-    border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) scale(0);
-    transition:transform .15s ease;
-  }
-  .check-list input:checked::after{transform:rotate(45deg) scale(1)}
+    html:focus-within {
+      scroll-behavior: smooth
+    }
 
-  /* run of show — deliverables with time */
-  .run{
-    margin-top:18px;border:1px solid var(--rule-strong);border-radius:8px;
-    background:#fff;overflow:hidden;
-  }
-  .run-head{
-    background:var(--stage);color:#fff;padding:13px 18px;
-    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
-  }
-  .run-head b{font-size:15.5px;font-weight:700}
-  .run-head span{
-    font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:#9aa8ba;white-space:nowrap;
-  }
-  .run-lede{margin:0;padding:13px 18px 4px;font-size:15px;color:#3d454f;max-width:64ch}
-  .acc-body .run-list{list-style:none;margin:0;padding:8px 0 0}
-  .acc-body .run-list li{padding:0}
-  .run-row{
-    display:grid;grid-template-columns:96px 66px minmax(0,1fr);gap:6px 14px;
-    padding:12px 18px;border-top:1px solid var(--rule);align-items:start;
-  }
-  .run-row:first-child{border-top:1px dashed var(--rule-strong);margin-top:6px}
-  .run-time{
-    font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:var(--ink);
-    padding-top:3px;
-  }
-  .run-dur{
-    justify-self:start;font-size:12px;font-weight:700;color:var(--blue-dark);
-    background:#eaf1fd;border-radius:99px;padding:3px 9px;white-space:nowrap;
-  }
-  .run-body{font-size:14.5px;line-height:1.5;color:#3d454f}
-  .run-body b{color:var(--ink);font-weight:700}
-  .run-out{
-    display:block;font-style:normal;color:var(--muted);font-size:13.5px;margin-top:2px;
-  }
-  .run-out b{color:#3d454f;font-weight:700}
-  .run-foot{
-    border-top:1px solid var(--rule);background:#fafbfc;padding:14px 18px;
-    display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;
-  }
-  .run-foot b{font-size:14px;font-weight:700;margin-right:2px}
-  .run-foot span{
-    font-size:13px;font-weight:600;color:#2c3540;background:#fff;
-    border:1px solid var(--rule-strong);border-radius:99px;padding:4px 11px;
-  }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+    }
 
-  @media (max-width:640px){
-    summary{grid-template-columns:56px 1fr auto;gap:12px;padding:16px 2px}
-    .acc-body{padding-left:2px}
-    .sum-title{font-size:16.5px}
-    .check-head{padding:13px 15px 10px}
-    .check-bar{margin:0 15px 6px}
-    .acc-body .check-list{padding:4px 15px 13px}
-    .run-head{padding:12px 15px}
-    .run-lede{padding:12px 15px 2px}
-    .run-row{grid-template-columns:auto auto;gap:4px 10px;padding:12px 15px}
-    .run-time{padding-top:0}
-    .run-body{grid-column:1 / -1}
-    .run-foot{padding:13px 15px}
-  }
+    img,
+    svg {
+      display: block;
+      max-width: 100%
+    }
 
-  /* ---------- details split ---------- */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:34px}
-  .panel{border-top:3px solid var(--ink);padding-top:18px}
-  .panel h3{font-size:19px;font-weight:800;letter-spacing:-.02em}
-  .panel ul{margin:14px 0 0;padding:0;list-style:none}
-  .panel li{
-    padding:10px 0;border-bottom:1px solid var(--rule);font-size:15.5px;color:#3d454f;
-    display:flex;gap:11px;
-  }
-  .panel li::before{
-    content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);
-    flex:none;margin-top:10px;
-  }
-  .panel li b{color:var(--ink);font-weight:700}
-  @media (max-width:760px){.split{grid-template-columns:1fr;gap:34px}}
+    a {
+      color: var(--blue-dark);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px
+    }
 
-  /* ---------- faq mini ---------- */
-  .cta-band{
-    background:#f3f7fd;border:1px solid #d5e3fa;border-radius:10px;
-    padding:34px 32px;margin-top:44px;
-    display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between;
-  }
-  .cta-band h3{font-size:clamp(21px,2.6vw,27px);font-weight:800;letter-spacing:-.02em;max-width:22ch}
-  .cta-band p{color:var(--muted);margin-top:7px;font-size:15.5px}
-  .cta-band .btn{width:auto;padding:14px 26px}
+    a:hover {
+      color: var(--blue)
+    }
 
-  /* ---------- footer ---------- */
-  footer{background:var(--stage);color:#9aa8ba;padding:52px 0 44px;font-size:14.5px}
-  .foot-grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
-  footer .brand-text b{color:#fff}
-  footer .brand-text span{color:#7c8ba0}
-  footer .brand-mark{background:var(--stage-2);border:1px solid var(--stage-rule)}
-  .foot-links{display:flex;flex-wrap:wrap;gap:10px 24px}
-  .foot-links a{color:#c3ccd8;text-decoration:none}
-  .foot-links a:hover{color:#fff;text-decoration:underline}
-  .foot-note{
-    margin-top:34px;padding-top:22px;border-top:1px solid var(--stage-rule);
-    display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;
-    font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:#7c8ba0;
-  }
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -.02em
+    }
 
-  /* ---------- mobile sticky bar ---------- */
-  .mbar{
-    position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;
-    background:#fff;border-top:1px solid var(--rule-strong);
-    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
-    box-shadow:0 -6px 24px rgba(17,20,25,.1);
-    align-items:center;gap:14px;
-  }
-  .mbar-price b{font-size:20px;font-weight:800;letter-spacing:-.02em}
-  .mbar-price span{display:block;font-size:12px;color:var(--muted)}
-  .mbar .btn{margin-left:auto;width:auto;padding:11px 20px;font-size:15px}
-  @media (max-width:960px){
-    .hero-grid{grid-template-columns:1fr;gap:36px}
-    .card{position:static;box-shadow:none}
-    .learn-box{grid-template-columns:1fr;padding:24px 22px}
-    .mbar{display:flex}
-    body{padding-bottom:74px}
-  }
-  @media (max-width:520px){
-    .hero{padding:30px 0 40px}
-    .section{padding:48px 0}
-    .stage{padding:52px 0 56px}
-    .facts i{padding:0 8px}
-    .cta-band{padding:26px 22px}
-    .cta-band .btn{width:100%}
-    .player{gap:14px}
-    .player-title{display:none}
-    .player-date{font-size:26px}
-    .player-date small{margin-top:8px;letter-spacing:.16em}
-    .play-btn{width:50px;height:50px}
-    .player-bar{padding:10px 14px 12px}
-    .player-meta{margin-top:7px}
-  }
+    p {
+      margin: 0
+    }
 
-  @media (prefers-reduced-motion:reduce){
-    html:focus-within{scroll-behavior:auto}
-    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
-    .clip{clip-path:inset(0 0 0 0) !important}
-    .js .playhead{opacity:.5}
-  }
-</style>
+    button,
+    input {
+      font: inherit
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+      border-radius: 2px
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--wrap);
+      margin-inline: auto;
+      padding-inline: 22px
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    /* ---------- nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: saturate(160%) blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-in {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      height: 62px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      margin-right: auto
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      flex: none;
+      border-radius: 50%;
+      background: var(--paper) url("data:image/png;base64,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") center/contain no-repeat;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05
+    }
+
+    .brand-text b {
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: -.01em
+    }
+
+    .brand-text span {
+      font-size: 11.5px;
+      color: var(--muted);
+      font-weight: 500
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--ink)
+    }
+
+    .nav-cta {
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: none;
+      background: var(--blue);
+      color: #fff;
+      padding: 9px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--blue);
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+      color: #fff
+    }
+
+    @media (max-width:880px) {
+      .nav-links {
+        display: none
+      }
+    }
+
+    /* ---------- hero ---------- */
+    .hero {
+      padding: 44px 0 56px;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 344px;
+      gap: 52px;
+      align-items: start
+    }
+
+    .crumbs {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-bottom: 18px
+    }
+
+    .crumbs a {
+      color: var(--muted);
+      text-decoration: none
+    }
+
+    .crumbs a:hover {
+      color: var(--blue-dark);
+      text-decoration: underline
+    }
+
+    .crumbs span {
+      margin: 0 7px;
+      color: var(--rule-strong)
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 54px);
+      font-weight: 800;
+      letter-spacing: -.032em;
+      max-width: 16ch;
+    }
+
+    .hero-lede {
+      margin-top: 18px;
+      max-width: 56ch;
+      font-size: clamp(16.5px, 1.6vw, 19px);
+      color: #333a44;
+    }
+
+    .facts {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 0;
+      margin-top: 22px;
+      font-size: 14.5px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .facts b {
+      color: var(--ink);
+      font-weight: 700
+    }
+
+    .facts i {
+      font-style: normal;
+      color: var(--rule-strong);
+      padding: 0 12px
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      font-size: 14.5px;
+      color: var(--muted)
+    }
+
+    .rating b {
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 800
+    }
+
+    .dot-avatars {
+      display: flex
+    }
+
+    .dot-avatars span {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      margin-left: -7px;
+      background: linear-gradient(135deg, var(--ps), var(--dv));
+    }
+
+    .dot-avatars span:first-child {
+      margin-left: 0;
+      background: linear-gradient(135deg, var(--blue), var(--ps))
+    }
+
+    .dot-avatars span:nth-child(2) {
+      background: linear-gradient(135deg, #111, #6b7280)
+    }
+
+    /* hero image slot — same footprint as the old preview player */
+    .hero-shot {
+      position: relative;
+      margin: 30px 0 0;
+      aspect-ratio: 16/9;
+      background:
+        radial-gradient(120% 140% at 12% 0%, #2a1030 0%, transparent 55%),
+        radial-gradient(100% 120% at 95% 100%, #1b1a4e 0%, transparent 50%),
+        var(--stage);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--stage-rule);
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .shot-note {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .16em;
+      color: #8f8ab8;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    /* ---------- enrollment card ---------- */
+    .card {
+      border: 1px solid var(--rule-strong);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+      position: sticky;
+      top: 82px;
+      box-shadow: 0 2px 14px rgba(17, 20, 25, .07);
+    }
+
+    .card-top {
+      padding: 22px 22px 20px;
+      border-bottom: 1px solid var(--rule)
+    }
+
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 10px
+    }
+
+    .price b {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -.03em
+    }
+
+    .price em {
+      font-style: normal;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0a7a41;
+      background: #e9f8f0;
+      padding: 3px 8px;
+      border-radius: 4px
+    }
+
+    .card-note {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin-top: 6px
+    }
+
+    .card-body {
+      padding: 20px 22px 22px
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--blue);
+      color: #fff;
+      border: 1px solid var(--blue);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 13px 18px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .15s ease;
+    }
+
+    .btn:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+      color: #fff
+    }
+
+    .btn-ghost {
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      margin-top: 10px;
+    }
+
+    .btn-ghost:hover {
+      background: var(--ink);
+      color: #fff
+    }
+
+    .days {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+      border-top: 1px solid var(--rule)
+    }
+
+    .days li {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .day-chip {
+      text-align: center;
+      border: 1px solid var(--rule-strong);
+      border-radius: 5px;
+      padding: 3px 0;
+      line-height: 1.15;
+    }
+
+    .day-chip b {
+      display: block;
+      font-size: 15px;
+      font-weight: 800
+    }
+
+    .day-chip span {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase
+    }
+
+    .day-name {
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1.3
+    }
+
+    .day-name span {
+      display: block;
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 12.5px;
+      margin-top: 1px
+    }
+
+    .swatch {
+      width: 10px;
+      height: 34px;
+      border-radius: 3px
+    }
+
+    .sw-ps {
+      background: var(--ps)
+    }
+
+    .sw-cc {
+      background: #111
+    }
+
+    .sw-dv {
+      background: var(--dv)
+    }
+
+    .includes {
+      list-style: none;
+      margin: 16px 0 0;
+      padding: 0;
+      font-size: 14px;
+      color: #3d454f
+    }
+
+    .includes li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      padding: 4px 0
+    }
+
+    .includes svg {
+      width: 15px;
+      height: 15px;
+      flex: none;
+      margin-top: 4px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2.4
+    }
+
+    .rsvp {
+      margin-top: 18px;
+      border-top: 1px dashed var(--rule-strong);
+      padding-top: 16px
+    }
+
+    .rsvp label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 5px
+    }
+
+    .rsvp input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--rule-strong);
+      border-radius: var(--radius);
+      font-size: 15px;
+      margin-bottom: 11px;
+      background: #fbfcfd;
+    }
+
+    .rsvp input:hover {
+      border-color: #9aa4b1
+    }
+
+    .rsvp .fine {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 10px;
+      text-align: center
+    }
+
+    .rsvp-done {
+      background: #e9f8f0;
+      border: 1px solid #b9e6cd;
+      border-radius: var(--radius);
+      padding: 14px 15px;
+      font-size: 14.5px;
+      color: #14532d;
+    }
+
+    .rsvp-done b {
+      display: block;
+      font-size: 15.5px;
+      margin-bottom: 3px
+    }
+
+    /* ---------- stage / timeline ---------- */
+    .stage {
+      background: var(--stage);
+      color: #e8edf4;
+      padding: 70px 0 74px
+    }
+
+    .stage h2 {
+      font-size: clamp(27px, 3.4vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.03em;
+      max-width: 18ch;
+    }
+
+    .stage .sub {
+      margin-top: 12px;
+      color: #9aa8ba;
+      max-width: 58ch;
+      font-size: 16.5px
+    }
+
+    .tl {
+      margin-top: 44px;
+      position: relative
+    }
+
+    .tl-row {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 18px;
+      align-items: center
+    }
+
+    .tl-row+.tl-row {
+      margin-top: 14px
+    }
+
+    .ruler {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: #7c8ba0;
+      letter-spacing: .06em;
+      border-bottom: 1px solid var(--stage-rule);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tl-head {
+      text-align: right;
+      line-height: 1.25
+    }
+
+    .tl-head b {
+      display: block;
+      font-size: 15px;
+      color: #fff;
+      font-weight: 700
+    }
+
+    .tl-head span {
+      font-size: 12.5px;
+      color: #8593a6;
+      font-family: var(--mono);
+      letter-spacing: .05em
+    }
+
+    .lane {
+      position: relative;
+      height: 66px;
+      background: var(--stage-2);
+      border-radius: 6px;
+      overflow: hidden
+    }
+
+    .lane::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(90deg, transparent 0 79px, rgba(255, 255, 255, .05) 79px 80px);
+    }
+
+    .clip {
+      position: absolute;
+      inset: 6px auto 6px 6px;
+      width: calc(100% - 12px);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 18px;
+      overflow: hidden;
+    }
+
+    .js .clip {
+      clip-path: inset(0 100% 0 0)
+    }
+
+    .is-live .clip {
+      animation: reveal .85s cubic-bezier(.22, .75, .3, 1) forwards
+    }
+
+    .is-live .tl-row:nth-of-type(2) .clip {
+      animation-delay: .1s
+    }
+
+    .is-live .tl-row:nth-of-type(3) .clip {
+      animation-delay: .22s
+    }
+
+    .is-live .tl-row:nth-of-type(4) .clip {
+      animation-delay: .34s
+    }
+
+    @keyframes reveal {
+      to {
+        clip-path: inset(0 0 0 0)
+      }
+    }
+
+    .clip b {
+      font-size: clamp(17px, 2.2vw, 23px);
+      font-weight: 800;
+      letter-spacing: -.02em
+    }
+
+    .clip small {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .06em;
+      opacity: .75;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    .clip-ps {
+      background: linear-gradient(90deg, #0d63c9, #31a8ff);
+      color: #04121f
+    }
+
+    .clip-cc {
+      background: linear-gradient(90deg, #dfe3ea, #ffffff);
+      color: #12151a
+    }
+
+    .clip-dv {
+      background: linear-gradient(90deg, #6f5ae0, #9b87f5);
+      color: #120b2e
+    }
+
+    .clip-cc small,
+    .clip-ps small,
+    .clip-dv small {
+      opacity: .7
+    }
+
+    .playhead {
+      position: absolute;
+      top: 34px;
+      bottom: -6px;
+      left: 158px;
+      width: 2px;
+      background: var(--amber);
+      opacity: .5;
+      pointer-events: none;
+    }
+
+    .js .playhead {
+      opacity: 0
+    }
+
+    .playhead::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: -5px;
+      width: 12px;
+      height: 12px;
+      background: var(--amber);
+      border-radius: 2px;
+    }
+
+    .is-live .playhead {
+      animation: sweep 2.1s cubic-bezier(.5, 0, .2, 1) .35s forwards
+    }
+
+    @keyframes sweep {
+      0% {
+        opacity: 1;
+        transform: translateX(0)
+      }
+
+      85% {
+        opacity: 1
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(calc(100cqw - 160px))
+      }
+    }
+
+    .tl {
+      container-type: inline-size
+    }
+
+    .stage-foot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 26px;
+      margin-top: 34px;
+      font-size: 14.5px;
+      color: #9aa8ba;
+    }
+
+    .stage-foot b {
+      color: #fff;
+      font-weight: 700
+    }
+
+    @media (max-width:760px) {
+      .tl-row {
+        grid-template-columns: 1fr;
+        gap: 8px
+      }
+
+      .tl-head {
+        text-align: left;
+        display: flex;
+        align-items: baseline;
+        gap: 10px
+      }
+
+      .tl-head b,
+      .tl-head span {
+        display: inline
+      }
+
+      .ruler {
+        display: none
+      }
+
+      .playhead {
+        left: 0
+      }
+
+      @keyframes sweep {
+        0% {
+          opacity: 1;
+          transform: translateX(0)
+        }
+
+        85% {
+          opacity: 1
+        }
+
+        100% {
+          opacity: 0;
+          transform: translateX(calc(100cqw - 2px))
+        }
+      }
+
+      .lane {
+        height: 74px
+      }
+
+      .clip {
+        flex-wrap: wrap;
+        gap: 4px 12px;
+        align-content: center;
+        padding: 0 14px
+      }
+
+      .clip small {
+        margin-left: 0;
+        width: 100%
+      }
+    }
+
+    /* ---------- learn ---------- */
+    .section {
+      padding: 64px 0
+    }
+
+    .section+.section {
+      border-top: 1px solid var(--rule)
+    }
+
+    .section h2 {
+      font-size: clamp(24px, 3vw, 33px);
+      font-weight: 800;
+      letter-spacing: -.03em
+    }
+
+    .section .intro {
+      margin-top: 12px;
+      color: var(--muted);
+      max-width: 62ch
+    }
+
+    .learn-box {
+      margin-top: 30px;
+      border: 1px solid var(--rule-strong);
+      border-radius: 8px;
+      padding: 30px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 40px;
+    }
+
+    .learn-box li {
+      list-style: none;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 16.5px;
+      line-height: 1.5;
+    }
+
+    .learn-box ul {
+      margin: 0;
+      padding: 0;
+      display: contents
+    }
+
+    .learn-box svg {
+      width: 17px;
+      height: 17px;
+      flex: none;
+      margin-top: 5px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2.6
+    }
+
+    .learn-box b {
+      font-weight: 700
+    }
+
+    /* ---------- schedule details ---------- */
+    .acc {
+      margin-top: 28px;
+      border-top: 1px solid var(--rule)
+    }
+
+    details {
+      border-bottom: 1px solid var(--rule)
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 4px;
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker {
+      display: none
+    }
+
+    summary:hover .sum-title {
+      color: var(--blue-dark)
+    }
+
+    .sum-day {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .06em;
+      line-height: 1.3;
+      text-align: center;
+      border: 1px solid var(--rule-strong);
+      border-radius: 5px;
+      padding: 5px 0;
+    }
+
+    .sum-day b {
+      display: block;
+      font-family: var(--font);
+      font-size: 17px;
+      color: var(--ink);
+      font-weight: 800
+    }
+
+    .sum-title {
+      font-size: 18.5px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      transition: color .15s
+    }
+
+    .sum-title span {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 3px
+    }
+
+    .chev {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--rule-strong);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: transform .2s ease, background .2s;
+    }
+
+    .chev::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-right: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      transform: rotate(45deg) translate(-2px, -2px);
+    }
+
+    details[open] .chev {
+      transform: rotate(180deg);
+      background: #f2f5f9
+    }
+
+    .acc-body {
+      padding: 0 4px 26px 86px
+    }
+
+    .acc-body ul {
+      margin: 0;
+      padding-left: 19px;
+      color: #3d454f
+    }
+
+    .acc-body>ul>li {
+      padding: 3px 0
+    }
+
+    .acc-body>ul,
+    .acc-body>.takeaway,
+    .acc-body>.sub-head {
+      max-width: 74ch
+    }
+
+    .takeaway {
+      margin-top: 16px;
+      padding: 12px 15px;
+      background: var(--tint);
+      border-left: 3px solid var(--blue);
+      font-size: 15px;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .takeaway b {
+      font-weight: 700
+    }
+
+    .sub-head {
+      margin: 24px 0 4px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sub-head::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--rule)
+    }
+
+    /* prerequisites checklist */
+    .check {
+      margin-top: 18px;
+      border: 1px solid var(--rule-strong);
+      border-radius: 8px;
+      background: #fafbfc;
+      overflow: hidden;
+    }
+
+    .check-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 14px;
+      padding: 15px 18px 11px;
+    }
+
+    .check-title {
+      font-size: 15.5px;
+      font-weight: 700
+    }
+
+    .check-count {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: .06em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .check.done .check-count {
+      color: #0a7a41
+    }
+
+    .check-bar {
+      height: 8px;
+      margin: 0 18px 8px;
+      background: #e7ecf2;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .check-bar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--blue-dark), var(--blue));
+      transition: width .4s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .check[data-tool="ps"] .check-bar i {
+      background: linear-gradient(90deg, #0d63c9, #31a8ff)
+    }
+
+    .check[data-tool="cc"] .check-bar i {
+      background: linear-gradient(90deg, #3d454f, #111419)
+    }
+
+    .check[data-tool="dv"] .check-bar i {
+      background: linear-gradient(90deg, #6f5ae0, #9b87f5)
+    }
+
+    .acc-body .check-list {
+      list-style: none;
+      margin: 0;
+      padding: 4px 18px 15px
+    }
+
+    .acc-body .check-list li {
+      padding: 0
+    }
+
+    @media (min-width:1080px) {
+      .acc-body .check-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2px 44px
+      }
+    }
+
+    .check-list label {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 11px;
+      align-items: start;
+      padding: 7px 0;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: #3d454f;
+      cursor: pointer;
+    }
+
+    .check-list label:has(input:checked) span {
+      opacity: .55
+    }
+
+    .check-list b {
+      color: var(--ink);
+      font-weight: 700
+    }
+
+    .check-list a {
+      font-weight: 600;
+      overflow-wrap: anywhere
+    }
+
+    .check-list input {
+      appearance: none;
+      -webkit-appearance: none;
+      margin: 4px 0 0;
+      width: 17px;
+      height: 17px;
+      flex: none;
+      border: 1.5px solid var(--rule-strong);
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      transition: background .15s, border-color .15s;
+    }
+
+    .check-list input:hover {
+      border-color: #8b96a4
+    }
+
+    .check-list input:checked {
+      background: var(--blue);
+      border-color: var(--blue)
+    }
+
+    .check[data-tool="ps"] input:checked {
+      background: #0d8fe0;
+      border-color: #0d8fe0
+    }
+
+    .check[data-tool="cc"] input:checked {
+      background: #111419;
+      border-color: #111419
+    }
+
+    .check[data-tool="dv"] input:checked {
+      background: #7a63ea;
+      border-color: #7a63ea
+    }
+
+    .check-list input::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 1.5px;
+      width: 4px;
+      height: 8px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) scale(0);
+      transition: transform .15s ease;
+    }
+
+    .check-list input:checked::after {
+      transform: rotate(45deg) scale(1)
+    }
+
+    /* run of show — deliverables with time */
+    .run {
+      margin-top: 18px;
+      border: 1px solid var(--rule-strong);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .run-head {
+      background: var(--stage);
+      color: #fff;
+      padding: 13px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .run-head b {
+      font-size: 15.5px;
+      font-weight: 700
+    }
+
+    .run-head span {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .06em;
+      color: #9aa8ba;
+      white-space: nowrap;
+    }
+
+    .run-lede {
+      margin: 0;
+      padding: 13px 18px 4px;
+      font-size: 15px;
+      color: #3d454f;
+      max-width: 64ch
+    }
+
+    .acc-body .run-list {
+      list-style: none;
+      margin: 0;
+      padding: 8px 0 0
+    }
+
+    .run-row {
+      display: grid;
+      grid-template-columns: 96px 66px minmax(0, 1fr);
+      gap: 6px 14px;
+      padding: 12px 18px;
+      border-top: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .acc-body .run-list>li.run-row {
+      padding: 12px 18px
+    }
+
+    .run-row:first-child {
+      border-top: 1px dashed var(--rule-strong);
+      margin-top: 6px
+    }
+
+    .run-time {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: .03em;
+      color: var(--ink);
+      padding-top: 3px;
+    }
+
+    .run-dur {
+      justify-self: start;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      background: var(--tint);
+      border-radius: 99px;
+      padding: 3px 9px;
+      white-space: nowrap;
+    }
+
+    .run-body {
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: #3d454f
+    }
+
+    .run-body b {
+      color: var(--ink);
+      font-weight: 700
+    }
+
+    .run-out {
+      display: block;
+      font-style: normal;
+      color: var(--muted);
+      font-size: 13.5px;
+      margin-top: 2px;
+    }
+
+    .run-out b {
+      color: #3d454f;
+      font-weight: 700
+    }
+
+    .run-foot {
+      border-top: 1px solid var(--rule);
+      background: #fafbfc;
+      padding: 14px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      align-items: center;
+    }
+
+    .run-foot b {
+      font-size: 14px;
+      font-weight: 700;
+      margin-right: 2px
+    }
+
+    .run-foot span {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2c3540;
+      background: #fff;
+      border: 1px solid var(--rule-strong);
+      border-radius: 99px;
+      padding: 4px 11px;
+    }
+
+    @media (max-width:640px) {
+      summary {
+        grid-template-columns: 56px 1fr auto;
+        gap: 12px;
+        padding: 16px 2px
+      }
+
+      .acc-body {
+        padding-left: 2px
+      }
+
+      .sum-title {
+        font-size: 16.5px
+      }
+
+      .check-head {
+        padding: 13px 15px 10px
+      }
+
+      .check-bar {
+        margin: 0 15px 6px
+      }
+
+      .acc-body .check-list {
+        padding: 4px 15px 13px
+      }
+
+      .run-head {
+        padding: 12px 15px
+      }
+
+      .run-lede {
+        padding: 12px 15px 2px
+      }
+
+      .acc-body .run-list>li.run-row {
+        grid-template-columns: 1fr auto;
+        gap: 5px 10px;
+        padding: 12px 15px
+      }
+
+      .run-time {
+        padding-top: 0
+      }
+
+      .run-dur {
+        justify-self: end
+      }
+
+      .run-body {
+        grid-column: 1 / -1
+      }
+
+      .run-foot {
+        padding: 13px 15px
+      }
+    }
+
+    @media (max-width:520px) {
+      .run-head {
+        flex-direction: column;
+        gap: 3px;
+        align-items: flex-start
+      }
+
+      .run-head span {
+        white-space: normal
+      }
+    }
+
+    /* ---------- details split ---------- */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      margin-top: 34px
+    }
+
+    .panel {
+      border-top: 3px solid var(--ink);
+      padding-top: 18px
+    }
+
+    .panel h3 {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.02em
+    }
+
+    .panel ul {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none
+    }
+
+    .panel li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 15.5px;
+      color: #3d454f;
+      display: flex;
+      gap: 11px;
+    }
+
+    .panel li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex: none;
+      margin-top: 10px;
+    }
+
+    .panel li b {
+      color: var(--ink);
+      font-weight: 700
+    }
+
+    @media (max-width:760px) {
+      .split {
+        grid-template-columns: 1fr;
+        gap: 34px
+      }
+    }
+
+    /* ---------- faq mini ---------- */
+    .cta-band {
+      background: var(--tint);
+      border: 1px solid var(--tint-rule);
+      border-radius: 10px;
+      padding: 34px 32px;
+      margin-top: 44px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cta-band h3 {
+      font-size: clamp(21px, 2.6vw, 27px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      max-width: 22ch
+    }
+
+    .cta-band p {
+      color: var(--muted);
+      margin-top: 7px;
+      font-size: 15.5px
+    }
+
+    .cta-band .btn {
+      width: auto;
+      padding: 14px 26px
+    }
+
+    /* ---------- footer ---------- */
+    footer {
+      background: var(--stage);
+      color: #9aa8ba;
+      padding: 52px 0 44px;
+      font-size: 14.5px
+    }
+
+    .foot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 26px;
+      justify-content: space-between;
+      align-items: flex-start
+    }
+
+    footer .brand-text b {
+      color: #fff
+    }
+
+    footer .brand-text span {
+      color: #7c8ba0
+    }
+
+    footer .brand-mark {
+      border: 1px solid var(--stage-rule)
+    }
+
+    .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px
+    }
+
+    .foot-links a {
+      color: #c3ccd8;
+      text-decoration: none
+    }
+
+    .foot-links a:hover {
+      color: #fff;
+      text-decoration: underline
+    }
+
+    .foot-note {
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 1px solid var(--stage-rule);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .05em;
+      color: #7c8ba0;
+    }
+
+    /* ---------- mobile sticky bar ---------- */
+    .mbar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      display: none;
+      background: #fff;
+      border-top: 1px solid var(--rule-strong);
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      box-shadow: 0 -6px 24px rgba(17, 20, 25, .1);
+      align-items: center;
+      gap: 14px;
+    }
+
+    .mbar-price b {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -.02em
+    }
+
+    .mbar-price span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .mbar .btn {
+      margin-left: auto;
+      width: auto;
+      padding: 11px 20px;
+      font-size: 15px
+    }
+
+    @media (max-width:960px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px
+      }
+
+      .card {
+        position: static;
+        box-shadow: none
+      }
+
+      .learn-box {
+        grid-template-columns: 1fr;
+        padding: 24px 22px
+      }
+
+      .mbar {
+        display: flex
+      }
+
+      body {
+        padding-bottom: 74px
+      }
+    }
+
+    @media (max-width:520px) {
+      .hero {
+        padding: 30px 0 40px
+      }
+
+      .section {
+        padding: 48px 0
+      }
+
+      .stage {
+        padding: 52px 0 56px
+      }
+
+      .facts i {
+        padding: 0 8px
+      }
+
+      .cta-band {
+        padding: 26px 22px
+      }
+
+      .cta-band .btn {
+        width: 100%
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html:focus-within {
+        scroll-behavior: auto
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important
+      }
+
+      .clip {
+        clip-path: inset(0 0 0 0) !important
+      }
+
+      .js .playhead {
+        opacity: .5
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="nav">
-  <div class="wrap nav-in">
-    <a class="brand" href="#top">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 12 12"><path d="M1 0.5 L11 6 L1 11.5 Z" fill="#31a8ff"/></svg>
-      </span>
-      <span class="brand-text">
-        <b>Content &amp; Media Club</b>
-        <span>SRKR Engineering College</span>
-      </span>
-    </a>
-    <nav class="nav-links" aria-label="Page sections">
-      <a href="#timeline">Timeline</a>
-      <a href="#learn">What you'll learn</a>
-      <a href="#schedule">Daily plan</a>
-      <a href="#details">Details</a>
-    </nav>
-    <a class="nav-cta" href="#reserve">Reserve a seat</a>
-  </div>
-</header>
-
-<main id="top">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="crumbs"><a href="#top">Workshops</a><span>/</span><a href="#top">Media editing</a><span>/</span>3-day series</p>
-
-        <h1>Photoshop, CapCut &amp; DaVinci: a 3-day editing workshop</h1>
-
-        <p class="hero-lede">
-          Three afternoons, three tools, one finished portfolio piece each day.
-          Retouch a photo, cut a reel, then colour-grade an edit — no prior
-          experience needed.
-        </p>
-
-        <div class="facts">
-          <b>Oct 7–9, 2026</b><i>|</i>
-          <b>3:30–4:30 PM</b><i>|</i>
-          3 sessions · 3 hrs total<i>|</i>
-          Beginner level
-        </div>
-
-        <div class="player" id="player" role="group" aria-label="Workshop preview">
-          <span class="player-title">Workshop preview</span>
-          <p class="player-date">Oct 7 · 8 · 9<small>3:30 – 4:30 PM · Media Lab</small></p>
-          <button class="play-btn" id="playBtn" type="button" aria-label="Play preview">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
-          </button>
-          <div class="player-bar">
-            <div class="scrub">
-              <span class="s1"></span><span class="s2"></span><span class="s3"></span>
-              <span class="scrub-fill"></span>
-            </div>
-            <div class="player-meta">
-              <span id="tc">00:00 / 01:00</span>
-              <span class="player-tools" aria-hidden="true">
-                <i style="background:#31a8ff"></i>
-                <i style="background:#edeff3"></i>
-                <i style="background:#9b87f5"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- enrollment card -->
-      <aside class="card" id="reserve" aria-label="Workshop registration">
-        <div class="card-top">
-          <div class="price">
-            <b>Free</b>
-            <em>3-day series</em>
-          </div>
-          <p class="card-note">Open to every SRKR student. 150 seats, first come first served.</p>
-        </div>
-
-        <div class="card-body">
-          <a class="btn" href="#rsvp-name">Reserve your seat</a>
-          <button class="btn btn-ghost" type="button" onclick="document.getElementById('schedule').scrollIntoView()">See the daily plan</button>
-
-          <ul class="days">
-            <li>
-              <span class="day-chip"><b>07</b><span>Wed</span></span>
-              <span class="day-name">Adobe Photoshop<span>Photo retouch &amp; poster design</span></span>
-              <span class="swatch sw-ps" aria-hidden="true"></span>
-            </li>
-            <li>
-              <span class="day-chip"><b>08</b><span>Thu</span></span>
-              <span class="day-name">CapCut<span>Fast cuts, captions &amp; reels</span></span>
-              <span class="swatch sw-cc" aria-hidden="true"></span>
-            </li>
-            <li>
-              <span class="day-chip"><b>09</b><span>Fri</span></span>
-              <span class="day-name">DaVinci Resolve 20<span>Grade, mix &amp; final export</span></span>
-              <span class="swatch sw-dv" aria-hidden="true"></span>
-            </li>
-          </ul>
-
-          <ul class="includes">
-            <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg>Hands-on lab seat with a workstation</li>
-            <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg>Project files &amp; cheat-sheet notes</li>
-            <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg>Participation certificate</li>
-            <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg>Portfolio-ready output from each day</li>
-          </ul>
-
-          <form class="rsvp" id="rsvpForm" novalidate>
-            <label for="rsvp-name">Full name</label>
-            <input id="rsvp-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
-
-            <label for="rsvp-email">College email</label>
-            <input id="rsvp-email" name="email" type="email" autocomplete="email" placeholder="you@srkr.edu.in" required>
-
-            <button class="btn" type="submit">Confirm my seat</button>
-            <p class="fine">No payment. We'll mail the room number a day before.</p>
-          </form>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- TIMELINE -->
-  <section class="stage" id="timeline">
-    <div class="wrap">
-      <h2>Three days, laid out like a timeline</h2>
-      <p class="sub">Every session runs 3:30–4:30 PM in the Media Lab. One tool per day, so you leave each afternoon with something finished.</p>
-
-      <div class="tl" id="tl">
-        <div class="tl-row" aria-hidden="true">
-          <div></div>
-          <div class="ruler">
-            <span>3:30</span><span>3:45</span><span>4:00</span><span>4:15</span><span>4:30 PM</span>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <div class="tl-head"><b>Day 01</b><span>WED · OCT 7</span></div>
-          <div class="lane">
-            <div class="clip clip-ps"><b>Photoshop</b><small>3:30 – 4:30 PM</small></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <div class="tl-head"><b>Day 02</b><span>THU · OCT 8</span></div>
-          <div class="lane">
-            <div class="clip clip-cc"><b>CapCut</b><small>3:30 – 4:30 PM</small></div>
-          </div>
-        </div>
-
-        <div class="tl-row">
-          <div class="tl-head"><b>Day 03</b><span>FRI · OCT 9</span></div>
-          <div class="lane">
-            <div class="clip clip-dv"><b>DaVinci Resolve</b><small>3:30 – 4:30 PM</small></div>
-          </div>
-        </div>
-
-        <span class="playhead" aria-hidden="true"></span>
-      </div>
-
-      <div class="stage-foot">
-        <span><b>Where</b> — Media Lab, SRKR campus</span>
-        <span><b>Bring</b> — laptop with that day's app installed</span>
-        <span><b>Entry</b> — free, registration required</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- LEARN -->
-  <section class="section" id="learn">
-    <div class="wrap">
-      <h2>What you'll learn</h2>
-      <p class="intro">By the end of the third session you'll have touched all three industry tools and built a small set of finished edits.</p>
-
-      <div class="learn-box">
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Clean up and retouch photos with <b>layers, masks and non-destructive edits</b> in Photoshop</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Turn raw clips into a paced <b>30-second reel</b> with captions, cuts and sound in CapCut</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Turn <b>ordinary footage into something that looks like cinema</b> — balance, grade and finish in DaVinci Resolve</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Choose the right tool for the job instead of forcing <b>one app to do everything</b></span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Set <b>export settings</b> that stay sharp on Instagram, YouTube and in print</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Build a repeatable <b>editing workflow</b> you can finish inside one hour</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCHEDULE -->
-  <section class="section" id="schedule">
-    <div class="wrap">
-      <h2>Daily plan</h2>
-      <p class="intro">Each day stands alone — join one or join all three. Times are the same every day: 3:30 to 4:30 PM (1 hr). Every session needs its own app, so install it before you come — the steps are inside each day.</p>
-
-      <div class="acc">
-        <details open>
-          <summary>
-            <span class="sum-day"><b>07</b>WED</span>
-            <span class="sum-title">Photoshop — retouch &amp; design<span>Wednesday, October 7 · 3:30–4:30 PM · 1 hr</span></span>
-            <span class="chev" aria-hidden="true"></span>
-          </summary>
-          <div class="acc-body">
-            <div class="check" data-tool="ps" data-key="photoshop">
-              <div class="check-head">
-                <span class="check-title">Prerequisites — tick them off before Wednesday</span>
-                <span class="check-count">0 / 5</span>
-              </div>
-              <div class="check-bar" role="progressbar" aria-label="Photoshop prerequisites completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
-              <ul class="check-list">
-                <li><label><input type="checkbox"><span><b>Download Photoshop</b> — <a href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener">adobe.com/products/photoshop</a> → Free trial → install the <b>Creative Cloud</b> app → install Photoshop from it (any browser: Chrome, Safari, Edge)</span></label></li>
-                <li><label><input type="checkbox"><span><b>Open Photoshop once</b> and sign in, so first-run setup finishes before class</span></label></li>
-                <li><label><input type="checkbox"><span><b>Bring two photos</b> — a portrait to retouch and something to build a poster around</span></label></li>
-                <li><label><input type="checkbox"><span><b>Laptop charged + charger</b> — lab systems are available if yours can't run it</span></label></li>
-                <li><label><input type="checkbox"><span><b>Watch</b> a <a href="https://www.youtube.com/results?search_query=photoshop+for+complete+beginners+interface+tour" target="_blank" rel="noopener">beginner interface tour on YouTube</a> — 10 minutes is enough</span></label></li>
-              </ul>
-            </div>
-
-            <p class="sub-head">What the hour covers</p>
-            <ul>
-              <li>Tour the workspace: tools, panels, zoom and undo habits</li>
-              <li>Crop, straighten and fix lighting on a portrait</li>
-              <li>Remove distractions with healing, then dodge and burn</li>
-              <li>Add type and export a poster-sized graphic</li>
-            </ul>
-            <p class="takeaway"><b>You leave with:</b> a retouched photo and a finished poster for your feed.</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>
-            <span class="sum-day"><b>08</b>THU</span>
-            <span class="sum-title">CapCut — cut, caption, publish<span>Thursday, October 8 · 3:30–4:30 PM · 1 hr</span></span>
-            <span class="chev" aria-hidden="true"></span>
-          </summary>
-          <div class="acc-body">
-            <div class="check" data-tool="cc" data-key="capcut">
-              <div class="check-head">
-                <span class="check-title">Prerequisites — tick them off before Thursday</span>
-                <span class="check-count">0 / 5</span>
-              </div>
-              <div class="check-bar" role="progressbar" aria-label="CapCut prerequisites completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
-              <ul class="check-list">
-                <li><label><input type="checkbox"><span><b>Download CapCut</b> — <a href="https://www.capcut.com/" target="_blank" rel="noopener">capcut.com</a> → Download for Windows/macOS, or install the app from the Play Store / App Store</span></label></li>
-                <li><label><input type="checkbox"><span><b>Open it once</b> and sign in, so the editor loads straight away in class</span></label></li>
-                <li><label><input type="checkbox"><span><b>Bring a 10-second clip</b> shot vertically on your phone — that's your raw footage</span></label></li>
-                <li><label><input type="checkbox"><span><b>Device charged + charger</b> — laptop or phone, whichever you'll edit on</span></label></li>
-                <li><label><input type="checkbox"><span><b>Watch</b> a <a href="https://www.youtube.com/results?search_query=capcut+desktop+tutorial+for+beginners" target="_blank" rel="noopener">beginner CapCut tutorial on YouTube</a> — skim the timeline and captions parts</span></label></li>
-              </ul>
-            </div>
-
-            <p class="sub-head">What the hour covers</p>
-            <ul>
-              <li>Import footage and find the rhythm of a cut</li>
-              <li>Auto-captions, transitions and clean audio levels</li>
-              <li>Speed ramps, b-roll and simple effects without the clutter</li>
-              <li>Export vertical video that doesn't get re-compressed</li>
-            </ul>
-            <p class="takeaway"><b>You leave with:</b> a 30-second reel ready to post.</p>
-          </div>
-        </details>
-
-        <details>
-          <summary>
-            <span class="sum-day"><b>09</b>FRI</span>
-            <span class="sum-title">DaVinci Resolve 20 — edit, grade &amp; deliver<span>Friday, October 9 · 3:30–4:30 PM · 1 hr</span></span>
-            <span class="chev" aria-hidden="true"></span>
-          </summary>
-          <div class="acc-body">
-            <div class="check" data-tool="dv" data-key="davinci">
-              <div class="check-head">
-                <span class="check-title">Prerequisites — tick them off before Friday</span>
-                <span class="check-count">0 / 5</span>
-              </div>
-              <div class="check-bar" role="progressbar" aria-label="DaVinci Resolve prerequisites completed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
-              <ul class="check-list">
-                <li><label><input type="checkbox"><span><b>Download Resolve 20</b> — <a href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank" rel="noopener">blackmagicdesign.com/products/davinciresolve</a> → Free Download → pick Windows / macOS / Linux (the site may ask your name and email first)</span></label></li>
-                <li><label><input type="checkbox"><span><b>Install and open it once</b> — about 2 GB, so do it the day before; 8 GB RAM is the practical minimum</span></label></li>
-                <li><label><input type="checkbox"><span><b>Bring a 10-second clip + two photos</b> — your own footage is what we grade in the session</span></label></li>
-                <li><label><input type="checkbox"><span><b>Laptop charged + charger</b> — say "need a lab system" while registering if yours can't run Resolve</span></label></li>
-                <li><label><input type="checkbox"><span><b>Watch</b> a <a href="https://www.youtube.com/results?search_query=davinci+resolve+20+full+beginner+tutorial" target="_blank" rel="noopener">beginner walkthrough of Resolve 20 on YouTube</a> — just enough to recognise the seven pages</span></label></li>
-              </ul>
-            </div>
-
-            <div class="run">
-              <div class="run-head">
-                <b>Run of show — what you build</b>
-                <span>60 MIN · 3:30 → 4:30 PM</span>
-              </div>
-              <p class="run-lede">This is the hour that turns ordinary footage into cinema. Every block gives you something in your hands — here's what it is and how long it takes.</p>
-              <ol class="run-list">
-                <li class="run-row">
-                  <span class="run-time">3:30–3:40</span>
-                  <span class="run-dur">10 min</span>
-                  <span class="run-body"><b>Media + Cut pages</b> — import, sort into bins, rough assembly
-                    <span class="run-out"><b>Deliverable:</b> an organised project with a first cut on the timeline</span>
-                  </span>
-                </li>
-                <li class="run-row">
-                  <span class="run-time">3:40–3:55</span>
-                  <span class="run-dur">15 min</span>
-                  <span class="run-body"><b>Edit page</b> — trims, keyframes, titles
-                    <span class="run-out"><b>Deliverable:</b> a tightened edit with an opening title</span>
-                  </span>
-                </li>
-                <li class="run-row">
-                  <span class="run-time">3:55–4:02</span>
-                  <span class="run-dur">7 min</span>
-                  <span class="run-body"><b>Fusion page</b> — a simple motion graphic
-                    <span class="run-out"><b>Deliverable:</b> one animated lower-third or transition</span>
-                  </span>
-                </li>
-                <li class="run-row">
-                  <span class="run-time">4:02–4:20</span>
-                  <span class="run-dur">18 min</span>
-                  <span class="run-body"><b>Color page</b> — balance, curves, nodes, the filmic grade
-                    <span class="run-out"><b>Deliverable:</b> matched clips and your own saved grade node</span>
-                  </span>
-                </li>
-                <li class="run-row">
-                  <span class="run-time">4:20–4:26</span>
-                  <span class="run-dur">6 min</span>
-                  <span class="run-body"><b>Fairlight page</b> — dialogue levels and music
-                    <span class="run-out"><b>Deliverable:</b> a clean mix that doesn't clip</span>
-                  </span>
-                </li>
-                <li class="run-row">
-                  <span class="run-time">4:26–4:30</span>
-                  <span class="run-dur">4 min</span>
-                  <span class="run-body"><b>Deliver page</b> — render presets
-                    <span class="run-out"><b>Deliverable:</b> the final MP4, exported and ready to post</span>
-                  </span>
-                </li>
-              </ol>
-              <div class="run-foot">
-                <b>You walk out with</b>
-                <span>Graded video (MP4)</span>
-                <span>Resolve project file</span>
-                <span>Saved grade node</span>
-                <span>Export cheat sheet</span>
-              </div>
-            </div>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- DETAILS -->
-  <section class="section" id="details">
-    <div class="wrap">
-      <h2>Details</h2>
-
-      <div class="split">
-        <div class="panel">
-          <h3>Who it's for</h3>
-          <ul>
-            <li><span><b>Complete beginners</b> who have never opened an editing app</span></li>
-            <li><span><b>Club members</b> preparing posters, reels and event coverage</span></li>
-            <li><span><b>Final-year students</b> building a portfolio before placements</span></li>
-            <li><span>Anyone who wants one session to <b>compare all three tools</b> side by side</span></li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>What to bring</h3>
-          <ul>
-            <li><span><b>Your laptop with that day's software already installed</b> — the download steps are inside each session above</span></li>
-            <li><span><b>Charger</b>, and the laptop charged — installs and caches need the room</span></li>
-            <li><span><b>Two photos and a 10-second clip</b> of your own to edit during the session</span></li>
-            <li><span>Lab systems are available if your laptop <b>can't run Resolve</b> — tell us while registering</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="cta-band">
-        <div>
-          <h3>Three afternoons. Three tools. One edit of your own.</h3>
-          <p>Oct 7–9, 2026 · 3:30–4:30 PM · Media Lab, SRKR</p>
-        </div>
-        <a class="btn" href="#reserve">Reserve your seat</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
+  <header class="nav">
+    <div class="wrap nav-in">
       <a class="brand" href="#top">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 12 12"><path d="M1 0.5 L11 6 L1 11.5 Z" fill="#31a8ff"/></svg>
-        </span>
+        <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-text">
           <b>Content &amp; Media Club</b>
           <span>SRKR Engineering College</span>
         </span>
       </a>
-      <nav class="foot-links" aria-label="Footer">
+      <nav class="nav-links" aria-label="Page sections">
         <a href="#timeline">Timeline</a>
         <a href="#learn">What you'll learn</a>
         <a href="#schedule">Daily plan</a>
         <a href="#details">Details</a>
-        <a href="#reserve">Reserve</a>
       </nav>
+      <a class="nav-cta" href="#reserve">Reserve a seat</a>
     </div>
-    <div class="foot-note">
-      <span>OCT 7 – 9 2026 · 15:30 – 16:30 IST</span>
-      <span>Questions? Ask any club volunteer in the lab.</span>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="crumbs"><a href="#top">Workshops</a><span>/</span><a href="#top">Media
+              editing</a><span>/</span>3-day series</p>
+
+          <h1>Photoshop, CapCut &amp; DaVinci: a 3-day editing workshop</h1>
+
+          <p class="hero-lede">
+            Three afternoons, three tools, one finished portfolio piece each day.
+            Retouch a photo, cut a reel, then colour-grade an edit — no prior
+            experience needed.
+          </p>
+
+          <div class="facts">
+            <b>Oct 7–9, 2026</b><i>|</i>
+            <b>3:30–4:30 PM</b><i>|</i>
+            3 sessions · 3 hrs total<i>|</i>
+            Beginner level
+          </div>
+
+          <!-- hero image slot (16:9) — space reserved; drop in <img> when ready -->
+          <figure class="hero-shot" aria-label="Workshop image placeholder">
+            <span class="shot-note">Workshop image · 16:9</span>
+          </figure>
+        </div>
+
+        <!-- enrollment card -->
+        <aside class="card" id="reserve" aria-label="Workshop registration">
+          <div class="card-top">
+            <div class="price">
+              <b>Free</b>
+              <em>3-day series</em>
+            </div>
+            <p class="card-note">Open to every SRKR student. 150 seats, first come first served.</p>
+          </div>
+
+          <div class="card-body">
+            <a class="btn" href="#rsvp-name">Reserve your seat</a>
+            <button class="btn btn-ghost" type="button"
+              onclick="document.getElementById('schedule').scrollIntoView()">See the daily plan</button>
+
+            <ul class="days">
+              <li>
+                <span class="day-chip"><b>07</b><span>Wed</span></span>
+                <span class="day-name">Adobe Photoshop<span>Photo retouch &amp; poster design</span></span>
+                <span class="swatch sw-ps" aria-hidden="true"></span>
+              </li>
+              <li>
+                <span class="day-chip"><b>08</b><span>Thu</span></span>
+                <span class="day-name">CapCut<span>Fast cuts, captions &amp; reels</span></span>
+                <span class="swatch sw-cc" aria-hidden="true"></span>
+              </li>
+              <li>
+                <span class="day-chip"><b>09</b><span>Fri</span></span>
+                <span class="day-name">DaVinci Resolve 20<span>Grade, mix &amp; final export</span></span>
+                <span class="swatch sw-dv" aria-hidden="true"></span>
+              </li>
+            </ul>
+
+            <ul class="includes">
+              <li><svg viewBox="0 0 24 24">
+                  <path d="M4 12.5 9.5 18 20 6.5" />
+                </svg>Hands-on lab seat with a workstation</li>
+              <li><svg viewBox="0 0 24 24">
+                  <path d="M4 12.5 9.5 18 20 6.5" />
+                </svg>Project files &amp; cheat-sheet notes</li>
+              <li><svg viewBox="0 0 24 24">
+                  <path d="M4 12.5 9.5 18 20 6.5" />
+                </svg>Participation certificate</li>
+              <li><svg viewBox="0 0 24 24">
+                  <path d="M4 12.5 9.5 18 20 6.5" />
+                </svg>Portfolio-ready output from each day</li>
+            </ul>
+
+            <form class="rsvp" id="rsvpForm" novalidate>
+
+              <label for="rsvp-email">College email</label>
+              <input id="rsvp-email" name="email" type="email" autocomplete="email" placeholder="you@srkr.edu.in"
+                required>
+
+              <button class="btn" type="submit">Confirm my seat</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="stage" id="timeline">
+      <div class="wrap">
+        <h2>Three days, laid out like a timeline</h2>
+        <p class="sub">Every session runs 3:30–4:30 PM in the SRKR CITI 1<sup>st</sup> Floor. One tool per day, so you
+          leave
+          each
+          afternoon
+          with something finished.</p>
+
+        <div class="tl" id="tl">
+          <div class="tl-row" aria-hidden="true">
+            <div></div>
+            <div class="ruler">
+              <span>3:30</span><span>3:45</span><span>4:00</span><span>4:15</span><span>4:30 PM</span>
+            </div>
+          </div>
+
+          <div class="tl-row">
+            <div class="tl-head"><b>Day 01</b><span>WED · OCT 7</span></div>
+            <div class="lane">
+              <div class="clip clip-ps"><b>Photoshop</b><small>3:30 – 4:30 PM</small></div>
+            </div>
+          </div>
+
+          <div class="tl-row">
+            <div class="tl-head"><b>Day 02</b><span>THU · OCT 8</span></div>
+            <div class="lane">
+              <div class="clip clip-cc"><b>CapCut</b><small>3:30 – 4:30 PM</small></div>
+            </div>
+          </div>
+
+          <div class="tl-row">
+            <div class="tl-head"><b>Day 03</b><span>FRI · OCT 9</span></div>
+            <div class="lane">
+              <div class="clip clip-dv"><b>DaVinci Resolve</b><small>3:30 – 4:30 PM</small></div>
+            </div>
+          </div>
+
+          <span class="playhead" aria-hidden="true"></span>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- LEARN -->
+    <section class="section" id="learn">
+      <div class="wrap">
+        <h2>What you'll learn</h2>
+        <p class="intro">By the end of the third session you'll have touched all three industry tools and built a small
+          set of finished edits.</p>
+
+        <div class="learn-box">
+          <ul>
+            <li><svg viewBox="0 0 24 24">
+                <path d="M4 12.5 9.5 18 20 6.5" />
+              </svg><span>Clean up and retouch photos with <b>layers, masks and non-destructive edits</b> in
+                Photoshop</span></li>
+            <li><svg viewBox="0 0 24 24">
+                <path d="M4 12.5 9.5 18 20 6.5" />
+              </svg><span>Turn raw clips into a paced <b>30-second reel</b> with captions, cuts and sound in
+                CapCut</span></li>
+            <li><svg viewBox="0 0 24 24">
+                <path d="M4 12.5 9.5 18 20 6.5" />
+              </svg><span>Turn <b>ordinary footage into something that looks like cinema</b> — balance, grade and finish
+                in DaVinci Resolve</span></li>
+            <li><svg viewBox="0 0 24 24">
+                <path d="M4 12.5 9.5 18 20 6.5" />
+              </svg><span>Choose the right tool for the job instead of forcing <b>one app to do everything</b></span>
+            </li>
+            <li><svg viewBox="0 0 24 24">
+                <path d="M4 12.5 9.5 18 20 6.5" />
+              </svg><span>Set <b>export settings</b> that stay sharp on Instagram, YouTube and in print</span></li>
+            <li><svg viewBox="0 0 24 24">
+                <path d="M4 12.5 9.5 18 20 6.5" />
+              </svg><span>Build a repeatable <b>editing workflow</b> you can finish inside one hour</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="section" id="schedule">
+      <div class="wrap">
+        <h2>Daily plan</h2>
+        <p class="intro">Each day stands alone — join one or join all three. Times are the same every day: 3:30 to 4:30
+          PM (1 hr). Every session needs its own app, so install it before you come — the steps are inside each day.</p>
+
+        <div class="acc">
+          <details open>
+            <summary>
+              <span class="sum-day"><b>07</b>WED</span>
+              <span class="sum-title">Photoshop — retouch &amp; design<span>Wednesday, October 7 · 3:30–4:30 PM · 1
+                  hr</span></span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+              <div class="check" data-tool="ps" data-key="photoshop">
+                <div class="check-head">
+                  <span class="check-title">Prerequisites — tick them off before Wednesday</span>
+                  <span class="check-count">0 / 5</span>
+                </div>
+                <div class="check-bar" role="progressbar" aria-label="Photoshop prerequisites completed"
+                  aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+                <ul class="check-list">
+                  <li><label><input type="checkbox"><span><b>Download Photoshop</b> — <a
+                          href="https://www.adobe.com/products/photoshop.html" target="_blank"
+                          rel="noopener">adobe.com/products/photoshop</a> → Free trial → install the <b>Creative
+                          Cloud</b> app → install Photoshop from it (any browser: Chrome, Safari, Edge)</span></label>
+                  </li>
+                  <li><label><input type="checkbox"><span><b>Open Photoshop once</b> and sign in, so first-run setup
+                        finishes before class</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Bring two photos</b> — a portrait to retouch and something
+                        to build a poster around</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Laptop charged + charger</b> — lab systems are available if
+                        yours can't run it</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Watch</b> a <a
+                          href="https://www.youtube.com/results?search_query=photoshop+for+complete+beginners+interface+tour"
+                          target="_blank" rel="noopener">beginner interface tour on YouTube</a> — 10 minutes is
+                        enough</span></label></li>
+                </ul>
+              </div>
+
+              <p class="sub-head">What the hour covers</p>
+              <ul>
+                <li>Tour the workspace: tools, panels, zoom and undo habits</li>
+                <li>Crop, straighten and fix lighting on a portrait</li>
+                <li>Remove distractions with healing, then dodge and burn</li>
+                <li>Add type and export a poster-sized graphic</li>
+              </ul>
+              <p class="takeaway"><b>You leave with:</b> a retouched photo and a finished poster for your feed.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="sum-day"><b>08</b>THU</span>
+              <span class="sum-title">CapCut — cut, caption, publish<span>Thursday, October 8 · 3:30–4:30 PM · 1
+                  hr</span></span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+              <div class="check" data-tool="cc" data-key="capcut">
+                <div class="check-head">
+                  <span class="check-title">Prerequisites — tick them off before Thursday</span>
+                  <span class="check-count">0 / 5</span>
+                </div>
+                <div class="check-bar" role="progressbar" aria-label="CapCut prerequisites completed" aria-valuemin="0"
+                  aria-valuemax="100" aria-valuenow="0"><i></i></div>
+                <ul class="check-list">
+                  <li><label><input type="checkbox"><span><b>Download CapCut</b> — <a href="https://www.capcut.com/"
+                          target="_blank" rel="noopener">capcut.com</a> → Download for Windows/macOS, or install the app
+                        from the Play Store / App Store</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Open it once</b> and sign in, so the editor loads straight
+                        away in class</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Bring a 10-second clip</b> shot vertically on your phone —
+                        that's your raw footage</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Device charged + charger</b> — laptop or phone, whichever
+                        you'll edit on</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Watch</b> a <a
+                          href="https://www.youtube.com/results?search_query=capcut+desktop+tutorial+for+beginners"
+                          target="_blank" rel="noopener">beginner CapCut tutorial on YouTube</a> — skim the timeline and
+                        captions parts</span></label></li>
+                </ul>
+              </div>
+
+              <p class="sub-head">What the hour covers</p>
+              <ul>
+                <li>Import footage and find the rhythm of a cut</li>
+                <li>Auto-captions, transitions and clean audio levels</li>
+                <li>Speed ramps, b-roll and simple effects without the clutter</li>
+                <li>Export vertical video that doesn't get re-compressed</li>
+              </ul>
+              <p class="takeaway"><b>You leave with:</b> a 30-second reel ready to post.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="sum-day"><b>09</b>FRI</span>
+              <span class="sum-title">DaVinci Resolve 20 — edit, grade &amp; deliver<span>Friday, October 9 · 3:30–4:30
+                  PM · 1 hr</span></span>
+              <span class="chev" aria-hidden="true"></span>
+            </summary>
+            <div class="acc-body">
+              <div class="check" data-tool="dv" data-key="davinci">
+                <div class="check-head">
+                  <span class="check-title">Prerequisites — tick them off before Friday</span>
+                  <span class="check-count">0 / 4</span>
+                </div>
+                <div class="check-bar" role="progressbar" aria-label="DaVinci Resolve prerequisites completed"
+                  aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+                <ul class="check-list">
+                  <li><label><input type="checkbox"><span><b>Laptop + charger — required</b> — the session runs entirely
+                        on your machine; say "need a lab system" while registering if yours can't run
+                        Resolve</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Download Resolve 20</b> — <a
+                          href="https://www.blackmagicdesign.com/products/davinciresolve" target="_blank"
+                          rel="noopener">blackmagicdesign.com/products/davinciresolve</a> → Free Download → pick Windows
+                        / macOS / Linux (the site may ask your name and email first)</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Install and open it once</b> — about 2 GB, so do it the day
+                        before; 8 GB RAM is the practical minimum</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Watch this tutorial first</b> — <a
+                          href="https://youtu.be/RyDccfmetfI" target="_blank" rel="noopener">youtu.be/RyDccfmetfI</a> —
+                        just enough to recognise the seven pages</span></label></li>
+                </ul>
+              </div>
+
+              <div class="run">
+                <div class="run-head">
+                  <b>Run of show — what we cover</b>
+                  <span>60 MIN · 3:30 → 4:30 PM</span>
+                </div>
+                <p class="run-lede">This hour is a live demonstration of Resolve's basic tools, page by page. Each block
+                  is shown hands-on and timed — here's the route through the software and how long it takes.</p>
+                <ol class="run-list">
+                  <li class="run-row">
+                    <span class="run-time">3:30–3:40</span>
+                    <span class="run-dur">10 min</span>
+                    <span class="run-body"><b>Media + Cut pages</b> — import, sort into bins, rough assembly
+                      <span class="run-out"><b>Demo:</b> an organised project with a first cut on the timeline</span>
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-time">3:40–3:55</span>
+                    <span class="run-dur">15 min</span>
+                    <span class="run-body"><b>Edit page</b> — trims, keyframes, titles
+                      <span class="run-out"><b>Demo:</b> a tightened edit with an opening title</span>
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-time">3:55–4:02</span>
+                    <span class="run-dur">7 min</span>
+                    <span class="run-body"><b>Fusion page</b> — a simple motion graphic
+                      <span class="run-out"><b>Demo:</b> one animated lower-third or transition</span>
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-time">4:02–4:20</span>
+                    <span class="run-dur">18 min</span>
+                    <span class="run-body"><b>Color page</b> — balance, curves, nodes, the filmic grade
+                      <span class="run-out"><b>Demo:</b> matched clips and a saved grade node</span>
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-time">4:20–4:26</span>
+                    <span class="run-dur">6 min</span>
+                    <span class="run-body"><b>Fairlight page</b> — dialogue levels and music
+                      <span class="run-out"><b>Demo:</b> a clean mix that doesn't clip</span>
+                    </span>
+                  </li>
+                  <li class="run-row">
+                    <span class="run-time">4:26–4:30</span>
+                    <span class="run-dur">4 min</span>
+                    <span class="run-body"><b>Deliver page</b> — render presets
+                      <span class="run-out"><b>Demo:</b> the final MP4, exported and ready to post</span>
+                    </span>
+                  </li>
+                </ol>
+                <div class="run-foot">
+                  <b>What the demo leaves you with</b>
+                  <span>Graded video (MP4)</span>
+                  <span>Resolve project file</span>
+                  <span>Saved grade node</span>
+                  <span>Export cheat sheet</span>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="section" id="details">
+      <div class="wrap">
+        <h2>Details</h2>
+
+        <div class="split">
+          <div class="panel">
+            <h3>Who it's for</h3>
+            <ul>
+              <li><span><b>Complete beginners</b> who have never opened an editing app</span></li>
+              <li><span><b>Club members</b> preparing posters, reels and event coverage</span></li>
+              <li><span><b>Final-year students</b> building a portfolio before placements</span></li>
+              <li><span>Anyone who wants one session to <b>compare all three tools</b> side by side</span></li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>What to bring</h3>
+            <ul>
+              <li><span><b>Your laptop with that day's software already installed</b> — the download steps are inside
+                  each session above</span></li>
+              <li><span><b>Charger</b>, and the laptop charged — installs and caches need the room</span></li>
+              <li><span><b>Two photos and a 10-second clip</b> of your own to edit during the session</span></li>
+              <li><span>Lab systems are available if your laptop <b>can't run Resolve</b> — tell us while
+                  registering</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cta-band">
+          <div>
+            <h3>Three afternoons. Three tools. One edit of your own.</h3>
+            <p>Oct 7–9, 2026 · 3:30–4:30 PM · CITI 1<sup>st</sup> Floor, SRKR</p>
+          </div>
+          <a class="btn" href="#reserve">Reserve your seat</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">
+            <b>Content &amp; Media Club</b>
+            <span>SRKR Engineering College</span>
+          </span>
+        </a>
+        <nav class="foot-links" aria-label="Footer">
+          <a href="#timeline">Timeline</a>
+          <a href="#learn">What you'll learn</a>
+          <a href="#schedule">Daily plan</a>
+          <a href="#details">Details</a>
+          <a href="#reserve">Reserve</a>
+        </nav>
+      </div>
+      <div class="foot-note">
+        <span>OCT 7 – 9 2026 · 15:30 – 16:30 IST</span>
+        <span>Questions? Ask any club volunteer in the lab.</span>
+      </div>
     </div>
+  </footer>
+
+  <div class="mbar" aria-label="Quick registration">
+    <div class="mbar-price">
+      <b>Free</b>
+      <span>Oct 7–9 · 3:30 PM</span>
+    </div>
+    <a class="btn" href="#reserve">Reserve a seat</a>
   </div>
-</footer>
 
-<div class="mbar" aria-label="Quick registration">
-  <div class="mbar-price">
-    <b>Free</b>
-    <span>Oct 7–9 · 3:30 PM</span>
-  </div>
-  <a class="btn" href="#reserve">Reserve a seat</a>
-</div>
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-<script>
-(function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Timeline reveal — one orchestrated moment
-  var tl = document.getElementById('tl');
-  if (tl){
-    if (reduce || !('IntersectionObserver' in window)){
-      tl.classList.add('is-live');
-    } else {
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if (e.isIntersecting){ tl.classList.add('is-live'); io.disconnect(); }
-        });
-      }, {threshold:.3});
-      io.observe(tl);
-      setTimeout(function(){ tl.classList.add('is-live'); }, 4000);
-    }
-  }
-
-  // Preview player
-  var player = document.getElementById('player');
-  var btn = document.getElementById('playBtn');
-  var tc = document.getElementById('tc');
-  var timer = null;
-  if (player && btn){
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      toggle();
-    });
-    player.addEventListener('click', toggle);
-
-    function toggle(){
-      if (player.classList.contains('is-playing')){
-        stop();
-      } else {
-        player.classList.add('is-playing');
-        btn.classList.add('is-playing');
-        btn.setAttribute('aria-label','Pause preview');
-        btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h4v15H6zM14 4.5h4v15h-4z"/></svg>';
-        var t = 0;
-        timer = setInterval(function(){
-          t++;
-          if (t > 60){ stop(); return; }
-          tc.textContent = '00:' + String(t).padStart(2,'0') + ' / 01:00';
-        }, 116);
+      // Timeline reveal — one orchestrated moment
+      var tl = document.getElementById('tl');
+      if (tl) {
+        if (reduce || !('IntersectionObserver' in window)) {
+          tl.classList.add('is-live');
+        } else {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) { tl.classList.add('is-live'); io.disconnect(); }
+            });
+          }, { threshold: .3 });
+          io.observe(tl);
+          setTimeout(function () { tl.classList.add('is-live'); }, 4000);
+        }
       }
-    }
-    function stop(){
-      clearInterval(timer);
-      player.classList.remove('is-playing');
-      btn.classList.remove('is-playing');
-      btn.setAttribute('aria-label','Play preview');
-      btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>';
-      tc.textContent = '00:00 / 01:00';
-    }
-  }
 
-  // Prerequisite checklists — progress persists per session
-  document.querySelectorAll('.check').forEach(function(box){
-    var key = 'cmw-check-' + (box.dataset.key || '');
-    var boxes = Array.prototype.slice.call(box.querySelectorAll('input[type=checkbox]'));
-    var count = box.querySelector('.check-count');
-    var bar = box.querySelector('.check-bar');
-    var fill = bar ? bar.querySelector('i') : null;
-    var saved = [];
-    try { saved = JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) {}
-    boxes.forEach(function(cb, i){ cb.checked = !!saved[i]; });
+      // Prerequisite checklists — progress persists per session
+      document.querySelectorAll('.check').forEach(function (box) {
+        var key = 'cmw-check-' + (box.dataset.key || '');
+        var boxes = Array.prototype.slice.call(box.querySelectorAll('input[type=checkbox]'));
+        var count = box.querySelector('.check-count');
+        var bar = box.querySelector('.check-bar');
+        var fill = bar ? bar.querySelector('i') : null;
+        var saved = [];
+        try { saved = JSON.parse(localStorage.getItem(key) || '[]'); } catch (e) { }
+        boxes.forEach(function (cb, i) { cb.checked = !!saved[i]; });
 
-    function sync(){
-      var done = boxes.filter(function(cb){ return cb.checked; }).length;
-      var pct = boxes.length ? Math.round(done / boxes.length * 100) : 0;
-      if (count) count.textContent = done + ' / ' + boxes.length;
-      if (fill) fill.style.width = pct + '%';
-      if (bar) bar.setAttribute('aria-valuenow', pct);
-      box.classList.toggle('done', done === boxes.length && boxes.length > 0);
-      try {
-        localStorage.setItem(key, JSON.stringify(boxes.map(function(cb){ return cb.checked; })));
-      } catch (e) {}
-    }
-    boxes.forEach(function(cb){ cb.addEventListener('change', sync); });
-    sync();
-  });
+        function sync() {
+          var done = boxes.filter(function (cb) { return cb.checked; }).length;
+          var pct = boxes.length ? Math.round(done / boxes.length * 100) : 0;
+          if (count) count.textContent = done + ' / ' + boxes.length;
+          if (fill) fill.style.width = pct + '%';
+          if (bar) bar.setAttribute('aria-valuenow', pct);
+          box.classList.toggle('done', done === boxes.length && boxes.length > 0);
+          try {
+            localStorage.setItem(key, JSON.stringify(boxes.map(function (cb) { return cb.checked; })));
+          } catch (e) { }
+        }
+        boxes.forEach(function (cb) { cb.addEventListener('change', sync); });
+        sync();
+      });
 
-  // RSVP form
-  var form = document.getElementById('rsvpForm');
-  if (form){
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var name = form.name.value.trim();
-      var email = form.email.value.trim();
-      if (!name){ form.name.focus(); return; }
-      if (!/^\S+@\S+\.\S+$/.test(email)){ form.email.focus(); return; }
-      var first = name.split(' ')[0];
-      var box = document.createElement('div');
-      box.className = 'rsvp-done';
-      box.setAttribute('role','status');
-      box.innerHTML = '<b>Seat held for ' + first.replace(/[<>&]/g,'') + '</b>We\'ll send the room number and prep checklist to ' + email.replace(/[<>&]/g,'') + ' before Oct 7.';
-      form.replaceWith(box);
-    });
-  }
-})();
-</script>
+      // RSVP form
+      var form = document.getElementById('rsvpForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = form.email.value.trim();
+          if (!/^\S+@\S+\.\S+$/.test(email)) { form.email.focus(); return; }
+          var box = document.createElement('div');
+          box.className = 'rsvp-done';
+          box.setAttribute('role', 'status');
+          box.innerHTML = '<b>Seat held for ' + first.replace(/[<>&]/g, '') + '</b>We\'ll send the room number and prep checklist to ' + email.replace(/[<>&]/g, '') + ' before Oct 7.';
+          form.replaceWith(box);
+        });
+      }
+    })();
+  </script>
 </body>
+
 </html>
