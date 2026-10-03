@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Photoshop, CapCut &amp; DaVinci — 3-Day Editing Workshop | Content &amp; Media Club</title>
   <meta name="description"
-    content="A free 3-day hands-on editing workshop at SRKR: Photoshop on Oct 7, CapCut on Oct 8, DaVinci Resolve on Oct 9. Every day, 3:30–4:30 PM.">
+    content="A free 3-day hands-on editing workshop at SRKR: Photoshop on Oct 7, CapCut on Oct 8, DaVinci Resolve on Oct 9. Every day, 3:30-4:30 PM.">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,6 +96,15 @@
       outline: 2px solid var(--blue);
       outline-offset: 3px;
       border-radius: 2px
+    }
+
+    ::selection {
+      background: var(--blue);
+      color: #fff
+    }
+
+    input {
+      caret-color: var(--blue)
     }
 
     .wrap {
@@ -216,7 +225,7 @@
 
     /* ---------- hero ---------- */
     .hero {
-      padding: 44px 0 56px;
+      padding: 52px 0 60px;
       border-bottom: 1px solid var(--rule)
     }
 
@@ -230,7 +239,7 @@
     .crumbs {
       font-size: 13.5px;
       color: var(--muted);
-      margin-bottom: 18px
+      margin-bottom: 20px
     }
 
     .crumbs a {
@@ -251,12 +260,19 @@
     .hero h1 {
       font-size: clamp(34px, 5vw, 54px);
       font-weight: 800;
+      line-height: 1.06;
       letter-spacing: -.032em;
+      text-wrap: balance;
       max-width: 16ch;
     }
 
+    .hero h1 em {
+      font-style: normal;
+      color: var(--blue)
+    }
+
     .hero-lede {
-      margin-top: 18px;
+      margin-top: 20px;
       max-width: 56ch;
       font-size: clamp(16.5px, 1.6vw, 19px);
       color: #333a44;
@@ -266,11 +282,12 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px 0;
-      margin-top: 22px;
+      gap: 10px 0;
+      margin-top: 26px;
       font-size: 14.5px;
       color: var(--muted);
       font-weight: 500;
+      font-variant-numeric: tabular-nums;
     }
 
     .facts b {
@@ -280,61 +297,23 @@
 
     .facts i {
       font-style: normal;
-      color: var(--rule-strong);
-      padding: 0 12px
-    }
-
-    .rating {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-      font-size: 14.5px;
-      color: var(--muted)
-    }
-
-    .rating b {
-      color: var(--ink);
-      font-size: 16px;
-      font-weight: 800
-    }
-
-    .dot-avatars {
-      display: flex
-    }
-
-    .dot-avatars span {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      margin-left: -7px;
-      background: linear-gradient(135deg, var(--ps), var(--dv));
-    }
-
-    .dot-avatars span:first-child {
-      margin-left: 0;
-      background: linear-gradient(135deg, var(--blue), var(--ps))
-    }
-
-    .dot-avatars span:nth-child(2) {
-      background: linear-gradient(135deg, #111, #6b7280)
+      width: 1px;
+      height: 14px;
+      background: var(--rule-strong);
+      margin: 0 14px
     }
 
     /* hero image slot — same footprint as the old preview player */
     .hero-shot {
       position: relative;
-      margin: 30px 0 0;
+      margin: 36px 0 0;
       aspect-ratio: 16/9;
       background:
-        radial-gradient(120% 140% at 12% 0%, #2a1030 0%, transparent 55%),
-        radial-gradient(100% 120% at 95% 100%, #1b1a4e 0%, transparent 50%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, .05) 0 1px, transparent 1px 74px),
         var(--stage);
       border-radius: 8px;
       overflow: hidden;
-      border: 1px solid var(--stage-rule);
-      display: grid;
-      place-items: center;
+      border: 1px solid var(--stage-rule)
     }
 
     .hero-shot img {
@@ -344,14 +323,93 @@
       display: block
     }
 
+    .shot-art {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-content: center;
+      gap: 16px;
+      padding: 0 26px 44px
+    }
+
+    .shot-lane {
+      height: 32px;
+      border-radius: 4px
+    }
+
+    .lane-ps {
+      width: 76%;
+      background: linear-gradient(90deg, var(--ps) 0%, rgba(49, 168, 255, .3) 100%)
+    }
+
+    .lane-cc {
+      width: 58%;
+      margin-left: 14%;
+      background: linear-gradient(90deg, var(--cc) 0%, rgba(237, 239, 243, .22) 100%)
+    }
+
+    .lane-dv {
+      width: 44%;
+      margin-left: 32%;
+      background: linear-gradient(90deg, var(--dv) 0%, rgba(155, 135, 245, .28) 100%)
+    }
+
+    .shot-head {
+      position: absolute;
+      top: 12%;
+      bottom: 46px;
+      left: 47%;
+      width: 2px;
+      background: var(--amber)
+    }
+
+    .shot-head::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -4px;
+      border: 5px solid transparent;
+      border-top-color: var(--amber)
+    }
+
     .shot-note {
+      position: absolute;
+      left: 26px;
+      bottom: 18px;
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11.5px;
       letter-spacing: .16em;
-      color: #8f8ab8;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 0 20px;
+      color: #9b96c9;
+      text-transform: uppercase
+    }
+
+    @media (max-width: 560px) {
+      .facts {
+        gap: 8px 22px
+      }
+
+      .facts i {
+        display: none
+      }
+
+      .shot-art {
+        gap: 10px;
+        padding: 0 16px 34px
+      }
+
+      .shot-lane {
+        height: 18px
+      }
+
+      .shot-head {
+        bottom: 34px
+      }
+
+      .shot-note {
+        left: 16px;
+        bottom: 13px;
+        font-size: 11px
+      }
     }
 
     /* ---------- enrollment card ---------- */
@@ -1608,10 +1666,6 @@
         padding: 52px 0 56px
       }
 
-      .facts i {
-        padding: 0 8px
-      }
-
       .cta-band {
         padding: 26px 22px
       }
@@ -1684,15 +1738,21 @@
           </p>
 
           <div class="facts">
-            <b>Oct 7–9, 2026</b><i>|</i>
-            <b>3:30–4:30 PM</b><i>|</i>
-            3 sessions · 3 hrs total<i>|</i>
+            <b>Oct 7-9, 2026</b><i aria-hidden="true"></i>
+            <b>3:30-4:30 PM</b><i aria-hidden="true"></i>
+            3 sessions · 3 hrs total<i aria-hidden="true"></i>
             Beginner level
           </div>
 
-          <!-- hero image slot (16:9) — space reserved; drop in <img> when ready -->
+          <!-- hero image slot (16:9) — space reserved; replace contents with <img> when ready -->
           <figure class="hero-shot" aria-label="Workshop image placeholder">
-            <span class="shot-note">Workshop image · 16:9</span>
+            <div class="shot-art" aria-hidden="true">
+              <span class="shot-lane lane-ps"></span>
+              <span class="shot-lane lane-cc"></span>
+              <span class="shot-lane lane-dv"></span>
+              <span class="shot-head"></span>
+            </div>
+            <figcaption class="shot-note">Workshop image · 16:9</figcaption>
           </figure>
         </div>
 
@@ -1755,7 +1815,7 @@
     <section class="stage" id="timeline">
       <div class="wrap">
         <h2>Three days, laid out like a timeline</h2>
-        <p class="sub">Every session runs 3:30–4:30 PM in the SRKR CITI 1<sup>st</sup> Floor. One tool per day, so you
+        <p class="sub">Every session runs 3:30-4:30 PM in the SRKR CITI 1<sup>st</sup> Floor. One tool per day, so you
           leave
           each
           afternoon
@@ -1772,21 +1832,21 @@
           <div class="tl-row">
             <div class="tl-head"><b>Day 01</b><span>WED · OCT 7</span></div>
             <div class="lane">
-              <div class="clip clip-ps"><b>Photoshop</b><small>3:30 – 4:30 PM</small></div>
+              <div class="clip clip-ps"><b>Photoshop</b><small>3:30 - 4:30 PM</small></div>
             </div>
           </div>
 
           <div class="tl-row">
             <div class="tl-head"><b>Day 02</b><span>THU · OCT 8</span></div>
             <div class="lane">
-              <div class="clip clip-cc"><b>CapCut</b><small>3:30 – 4:30 PM</small></div>
+              <div class="clip clip-cc"><b>CapCut</b><small>3:30 - 4:30 PM</small></div>
             </div>
           </div>
 
           <div class="tl-row">
             <div class="tl-head"><b>Day 03</b><span>FRI · OCT 9</span></div>
             <div class="lane">
-              <div class="clip clip-dv"><b>DaVinci Resolve</b><small>3:30 – 4:30 PM</small></div>
+              <div class="clip clip-dv"><b>DaVinci Resolve</b><small>3:30 - 4:30 PM</small></div>
             </div>
           </div>
 
@@ -1845,7 +1905,7 @@
           <details open>
             <summary>
               <span class="sum-day"><b>07</b>WED</span>
-              <span class="sum-title">Photoshop — retouch &amp; design<span>Wednesday, October 7 · 3:30–4:30 PM · 1
+              <span class="sum-title">Photoshop — retouch &amp; design<span>Wednesday, October 7 · 3:30-4:30 PM · 1
                   hr</span></span>
               <span class="chev" aria-hidden="true"></span>
             </summary>
@@ -1888,7 +1948,7 @@
           <details>
             <summary>
               <span class="sum-day"><b>08</b>THU</span>
-              <span class="sum-title">CapCut — beyond the cut: the art of editing<span>Thursday, October 8 · 3:30–4:30
+              <span class="sum-title">CapCut — beyond the cut: the art of editing<span>Thursday, October 8 · 3:30-4:30
                   PM · 1
                   hr</span></span>
               <span class="chev" aria-hidden="true"></span>
@@ -1910,7 +1970,7 @@
                         in India.</span></label></li>
                   <li><label><input type="checkbox"><span><b>Open CapCut once</b> — Verify it works before the
                         workshop.</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Free 2–3 GB storage</b> — For the app and
+                  <li><label><input type="checkbox"><span><b>Free 2-3 GB storage</b> — For the app and
                         footage.</span></label></li>
                   <li><label><input type="checkbox"><span><b>Device + earphones</b> — Charge your phone or
                         laptop.</span></label></li>
@@ -1982,7 +2042,7 @@
           <details>
             <summary>
               <span class="sum-day"><b>09</b>FRI</span>
-              <span class="sum-title">DaVinci Resolve 20 — edit, grade &amp; deliver<span>Friday, October 9 · 3:30–4:30
+              <span class="sum-title">DaVinci Resolve 20 — edit, grade &amp; deliver<span>Friday, October 9 · 3:30-4:30
                   PM · 1 hr</span></span>
               <span class="chev" aria-hidden="true"></span>
             </summary>
@@ -2083,7 +2143,7 @@
         <div class="cta-band">
           <div>
             <h3>Three afternoons. Three tools. One edit of your own.</h3>
-            <p>Oct 7–9, 2026 · 3:30–4:30 PM · CITI 1<sup>st</sup> Floor, SRKR</p>
+            <p>Oct 7-9, 2026 · 3:30-4:30 PM · CITI 1<sup>st</sup> Floor, SRKR</p>
           </div>
           <a class="btn" href="#reserve">Reserve your seat</a>
         </div>
@@ -2111,7 +2171,7 @@
         </nav>
       </div>
       <div class="foot-note">
-        <span>OCT 7 – 9 2026 · 15:30 – 16:30 IST</span>
+        <span>OCT 7 - 9 2026 · 15:30 - 16:30 IST</span>
         <span>Questions? Ask any club volunteer in the lab.</span>
       </div>
     </div>
@@ -2120,7 +2180,7 @@
   <div class="mbar" aria-label="Quick registration">
     <div class="mbar-price">
       <b>Free</b>
-      <span>Oct 7–9 · 3:30 PM</span>
+      <span>Oct 7-9 · 3:30 PM</span>
     </div>
     <a class="btn" href="#reserve">Reserve a seat</a>
   </div>
