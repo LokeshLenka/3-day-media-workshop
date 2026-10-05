@@ -278,6 +278,14 @@
       color: #3a252a;
     }
 
+    .hero-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 36px;
+      border-radius: 8px;
+    }
+
     .facts {
       display: flex;
       flex-wrap: wrap;
@@ -1740,7 +1748,11 @@
             </div>
             <figcaption class="shot-note">Workshop image · 16:9</figcaption>
           </figure> -->
-          <img src="/webinarposterfinal.png" height="400" width="700" alt="Workshop Image">
+          <img class="hero-image" src="webinarposterfinal-700.webp"
+            srcset="webinarposterfinal-700.webp 700w, webinarposterfinal-1400.webp 1400w"
+            sizes="(max-width: 960px) calc(100vw - 44px), (max-width: 1224px) calc(100vw - 440px), 740px"
+            width="1400" height="804" alt="Poster for the three-day Photoshop, CapCut and DaVinci Resolve workshop"
+            fetchpriority="high" decoding="async">
         </div>
 
         <!-- enrollment card -->
