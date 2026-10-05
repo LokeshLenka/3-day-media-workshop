@@ -13,22 +13,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #ffffff;
-      --ink: #2b3d4f;
-      --muted: #5e6e7d;
-      --rule: #e7e7e7;
-      --rule-strong: #d9d9d9;
-      --stage: #110c2d;
-      --stage-2: #1c1940;
-      --stage-rule: #332f66;
-      --blue: #890c25;
-      --blue-dark: #6b0a1c;
-      --ps: #31a8ff;
-      --cc: #edeff3;
-      --dv: #9b87f5;
-      --amber: #f4282d;
-      --tint: #fdf4f6;
-      --tint-rule: #f0d3da;
+      --paper: #fffdfc;
+      --ink: #32141c;
+      --muted: #775e66;
+      --rule: #eadfe1;
+      --rule-strong: #d9c8cc;
+      --stage: #140408;
+      --stage-2: #40101d;
+      --stage-rule: #753246;
+      --blue: #890C25;
+      --blue-dark: #5c0719;
+      --ps: #890C25;
+      --cc: #fffdfc;
+      --dv: #f0d9de;
+      --amber: #d08a99;
+      --tint: #fbebee;
+      --tint-rule: #e6bdc7;
       --radius: 6px;
       --wrap: 1180px;
       --font: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -275,7 +275,7 @@
       margin-top: 20px;
       max-width: 56ch;
       font-size: clamp(16.5px, 1.6vw, 19px);
-      color: #333a44;
+      color: #3a252a;
     }
 
     .facts {
@@ -339,19 +339,19 @@
 
     .lane-ps {
       width: 76%;
-      background: linear-gradient(90deg, var(--ps) 0%, rgba(49, 168, 255, .3) 100%)
+      background: linear-gradient(90deg, #65091c 0%, rgba(137, 12, 37, .3) 100%)
     }
 
     .lane-cc {
       width: 58%;
       margin-left: 14%;
-      background: linear-gradient(90deg, var(--cc) 0%, rgba(237, 239, 243, .22) 100%)
+      background: linear-gradient(90deg, #fffdfc 0%, rgba(255, 253, 252, .22) 100%)
     }
 
     .lane-dv {
       width: 44%;
       margin-left: 32%;
-      background: linear-gradient(90deg, var(--dv) 0%, rgba(155, 135, 245, .28) 100%)
+      background: linear-gradient(90deg, var(--dv) 0%, rgba(240, 217, 222, .28) 100%)
     }
 
     .shot-head {
@@ -379,7 +379,7 @@
       font-family: var(--mono);
       font-size: 11.5px;
       letter-spacing: .16em;
-      color: #9b96c9;
+      color: #d08a99;
       text-transform: uppercase
     }
 
@@ -582,7 +582,7 @@
       margin: 16px 0 0;
       padding: 0;
       font-size: 14px;
-      color: #3d454f
+      color: #49383d
     }
 
     .includes li {
@@ -622,11 +622,11 @@
       border-radius: var(--radius);
       font-size: 15px;
       margin-bottom: 11px;
-      background: #fbfcfd;
+      background: #fffaf9;
     }
 
     .rsvp input:hover {
-      border-color: #9aa4b1
+      border-color: #b49da2
     }
 
     .rsvp .fine {
@@ -654,7 +654,7 @@
     /* ---------- stage / timeline ---------- */
     .stage {
       background: var(--stage);
-      color: #e8edf4;
+      color: #e8dce0;
       padding: 70px 0 74px
     }
 
@@ -668,7 +668,7 @@
 
     .stage .sub {
       margin-top: 12px;
-      color: #9aa8ba;
+      color: #d7aeb8;
       max-width: 58ch;
       font-size: 16.5px
     }
@@ -694,7 +694,7 @@
       justify-content: space-between;
       font-family: var(--mono);
       font-size: 11.5px;
-      color: #7c8ba0;
+      color: #c796a3;
       letter-spacing: .06em;
       border-bottom: 1px solid var(--stage-rule);
       padding-bottom: 8px;
@@ -715,7 +715,7 @@
 
     .tl-head span {
       font-size: 12.5px;
-      color: #8593a6;
+      color: #d7aeb8;
       font-family: var(--mono);
       letter-spacing: .05em
     }
@@ -790,18 +790,19 @@
     }
 
     .clip-ps {
-      background: linear-gradient(90deg, #0d63c9, #31a8ff);
-      color: #04121f
+      background: linear-gradient(90deg, #65091c, #890C25);
+      color: #fff
     }
 
     .clip-cc {
-      background: linear-gradient(90deg, #dfe3ea, #ffffff);
-      color: #12151a
+      background: #fffdfc;
+      color: #65091c;
+      border: 1px solid #d9aab4
     }
 
     .clip-dv {
-      background: linear-gradient(90deg, #6f5ae0, #9b87f5);
-      color: #120b2e
+      background: linear-gradient(90deg, #e9c2ca, #c96d82);
+      color: #32141c
     }
 
     .clip-cc small,
@@ -866,7 +867,7 @@
       gap: 10px 26px;
       margin-top: 34px;
       font-size: 14.5px;
-      color: #9aa8ba;
+      color: #d7aeb8;
     }
 
     .stage-foot b {
@@ -1077,7 +1078,7 @@
 
     details[open] .chev {
       transform: rotate(180deg);
-      background: #f2f5f9
+      background: #fcf4f5
     }
 
     .acc-body {
@@ -1087,7 +1088,7 @@
     .acc-body ul {
       margin: 0;
       padding-left: 19px;
-      color: #3d454f
+      color: #49383d
     }
 
     .acc-body>ul>li {
@@ -1135,7 +1136,7 @@
       margin-top: 18px;
       border: 1px solid var(--rule-strong);
       border-radius: 8px;
-      background: #fafbfc;
+      background: #fffaf9;
       overflow: hidden;
     }
 
@@ -1167,7 +1168,7 @@
     .check-bar {
       height: 8px;
       margin: 0 18px 8px;
-      background: #e7ecf2;
+      background: #eadfe1;
       border-radius: 99px;
       overflow: hidden;
     }
@@ -1182,15 +1183,15 @@
     }
 
     .check[data-tool="ps"] .check-bar i {
-      background: linear-gradient(90deg, #0d63c9, #31a8ff)
+      background: linear-gradient(90deg, #65091c, #890C25)
     }
 
     .check[data-tool="cc"] .check-bar i {
-      background: linear-gradient(90deg, #3d454f, #111419)
+      background: linear-gradient(90deg, #5c0719, #a93650)
     }
 
     .check[data-tool="dv"] .check-bar i {
-      background: linear-gradient(90deg, #6f5ae0, #9b87f5)
+      background: linear-gradient(90deg, #65091c, #890C25)
     }
 
     .acc-body .check-list {
@@ -1219,7 +1220,7 @@
       padding: 7px 0;
       font-size: 14.5px;
       line-height: 1.5;
-      color: #3d454f;
+      color: #49383d;
       cursor: pointer;
     }
 
@@ -1253,7 +1254,7 @@
     }
 
     .check-list input:hover {
-      border-color: #8b96a4
+      border-color: #ad8993
     }
 
     .check-list input:checked {
@@ -1262,18 +1263,18 @@
     }
 
     .check[data-tool="ps"] input:checked {
-      background: #0d8fe0;
-      border-color: #0d8fe0
+      background: var(--blue);
+      border-color: var(--blue)
     }
 
     .check[data-tool="cc"] input:checked {
-      background: #111419;
-      border-color: #111419
+      background: #65091c;
+      border-color: #65091c
     }
 
     .check[data-tool="dv"] input:checked {
-      background: #7a63ea;
-      border-color: #7a63ea
+      background: var(--blue);
+      border-color: var(--blue)
     }
 
     .check-list input::after {
@@ -1321,7 +1322,7 @@
       font-family: var(--mono);
       font-size: 12px;
       letter-spacing: .06em;
-      color: #9aa8ba;
+      color: #d7aeb8;
       white-space: nowrap;
     }
 
@@ -1329,7 +1330,7 @@
       margin: 0;
       padding: 13px 18px 4px;
       font-size: 15px;
-      color: #3d454f
+      color: #49383d
     }
 
     .acc-body .run-list {
@@ -1340,7 +1341,7 @@
 
     .run-row {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-columns: minmax(0, 1fr);
       gap: 6px 14px;
       padding: 12px 18px;
       border-top: 1px solid var(--rule);
@@ -1362,25 +1363,10 @@
       grid-row: 1
     }
 
-    .run-dur {
-      grid-column: 2;
-      grid-row: 1;
-      justify-self: end;
-      align-self: start;
-      margin-top: 2px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--blue-dark);
-      background: var(--tint);
-      border-radius: 99px;
-      padding: 3px 9px;
-      white-space: nowrap;
-    }
-
     .run-body {
       font-size: 14.5px;
       line-height: 1.5;
-      color: #3d454f
+      color: #49383d
     }
 
     .run-body b {
@@ -1429,7 +1415,7 @@
       }
 
       .acc-body .run-list>li.run-row {
-        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr);
         gap: 5px 10px;
         padding: 12px 15px
       }
@@ -1476,7 +1462,7 @@
       padding: 10px 0;
       border-bottom: 1px solid var(--rule);
       font-size: 15.5px;
-      color: #3d454f;
+      color: #49383d;
       display: flex;
       gap: 11px;
     }
@@ -1538,7 +1524,7 @@
     /* ---------- footer ---------- */
     footer {
       background: var(--stage);
-      color: #9aa8ba;
+      color: #d7aeb8;
       padding: 52px 0 44px;
       font-size: 14.5px
     }
@@ -1556,7 +1542,7 @@
     }
 
     footer .brand-text span {
-      color: #7c8ba0
+      color: #c796a3
     }
 
     footer .brand-mark {
@@ -1570,7 +1556,7 @@
     }
 
     .foot-links a {
-      color: #c3ccd8;
+      color: #f1dce0;
       text-decoration: none
     }
 
@@ -1590,7 +1576,7 @@
       font-family: var(--mono);
       font-size: 12px;
       letter-spacing: .05em;
-      color: #7c8ba0;
+      color: #c796a3;
     }
 
     /* ---------- mobile sticky bar ---------- */
@@ -1798,14 +1784,8 @@
             <button class="btn btn-ghost" type="button"
               onclick="document.getElementById('schedule').scrollIntoView()">See the daily plan</button>
 
-            <form class="rsvp" id="rsvpForm" novalidate>
-
-              <label for="rsvp-email">College email</label>
-              <input id="rsvp-email" name="email" type="email" autocomplete="email" placeholder="you@srkr.edu.in"
-                required>
-
-              <button class="btn" type="submit">Confirm my seat</button>
-            </form>
+            <a class="btn rsvp" href="https://forms.gle/jLbjpzxaPCZnnJLV7" target="_blank"
+              rel="noopener noreferrer">Confirm my seat</a>
           </div>
         </aside>
       </div>
@@ -1934,23 +1914,23 @@
 
               <p class="sub-head">What the hour covers</p>
               <ol class="run-list">
-                <li class="run-row"><span class="run-dur">5 min</span><span class="run-body"><b>Design Mindset</b> —
+                <li class="run-row"><span class="run-body"><b>Design Mindset</b> —
                     Thinking beyond aesthetics</span></li>
-                <li class="run-row"><span class="run-dur">7 min</span><span class="run-body"><b>Color Theory &
+                <li class="run-row"><span class="run-body"><b>Color Theory &
                       Psychology</b> — Colors and emotions</span></li>
-                <li class="run-row"><span class="run-dur">6 min</span><span class="run-body"><b>Typography & Font
+                <li class="run-row"><span class="run-body"><b>Typography & Font
                       Pairing</b> — Creating readable designs</span></li>
-                <li class="run-row"><span class="run-dur">5 min</span><span class="run-body"><b>Gestalt Principles</b> —
+                <li class="run-row"><span class="run-body"><b>Gestalt Principles</b> —
                     How people perceive visuals</span></li>
-                <li class="run-row"><span class="run-dur">5 min</span><span class="run-body"><b>Design Thinking</b> —
+                <li class="run-row"><span class="run-body"><b>Design Thinking</b> —
                     From idea to concept</span></li>
-                <li class="run-row"><span class="run-dur">7 min</span><span class="run-body"><b>Visual Hierarchy &
+                <li class="run-row"><span class="run-body"><b>Visual Hierarchy &
                       Composition</b> — Guiding the viewer's eye</span></li>
-                <li class="run-row"><span class="run-dur">5 min</span><span class="run-body"><b>Poster Analysis</b> —
+                <li class="run-row"><span class="run-body"><b>Poster Analysis</b> —
                     Decoding design choices</span></li>
-                <li class="run-row"><span class="run-dur">8 min</span><span class="run-body"><b>Essential Photoshop
+                <li class="run-row"><span class="run-body"><b>Essential Photoshop
                       Tools</b> — Applying design principles</span></li>
-                <li class="run-row"><span class="run-dur">12 min</span><span class="run-body"><b>Design Challenge &
+                <li class="run-row"><span class="run-body"><b>Design Challenge &
                       Final Breakdown</b> — Create and review a design</span></li>
               </ol>
             </div>
@@ -1968,7 +1948,7 @@
               <div class="check" data-tool="cc" data-key="capcut">
                 <div class="check-head">
                   <span class="check-title">Prerequisites — tick them off before Thursday</span>
-                  <span class="check-count">0 / 7</span>
+                  <span class="check-count">0 / 6</span>
                 </div>
                 <div class="check-bar" role="progressbar" aria-label="CapCut prerequisites completed" aria-valuemin="0"
                   aria-valuemax="100" aria-valuenow="0"><i></i></div>
@@ -1977,8 +1957,12 @@
                           href="https://drive.google.com/file/d/1lGKliAGGbkjPeoVoDIYoU0O__dl0sDbn/view?usp=drivesdk"
                           target="_blank" rel="noopener noreferrer">Download APK</a>; iOS: App Store (Australia
                         region).</span></label></li>
-                  <li><label><input type="checkbox"><span><b>Connect VPN</b> — Super VPN is needed to access CapCut
-                        in India.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>For PC</b> — Download CapCut from the <a
+                          href="https://www.capcut.com/tools/video-editor-download" target="_blank"
+                          rel="noopener noreferrer">official CapCut website</a>.</span></label></li>
+                  <li><label><input type="checkbox"><span><b>Use a VPN to access CapCut in India</b> — <a
+                          href="https://protonvpn.com/download" target="_blank" rel="noopener noreferrer">Proton VPN</a>
+                        is recommended.</span></label></li>
                   <li><label><input type="checkbox"><span><b>Open CapCut once</b> — Verify it works before the
                         workshop.</span></label></li>
                   <li><label><input type="checkbox"><span><b>Free 2-3 GB storage</b> — For the app and
@@ -1995,52 +1979,44 @@
                 </div>
                 <p class="run-lede">This is not a CapCut tools tutorial: the craft of editing first, the software
                   second.
-                  No prior experience needed and the raw footage is provided — here's how the hour is spent and how long
-                  each block takes.</p>
+                  No prior experience needed and the raw footage is provided — here's what we'll work through during the
+                  hour.</p>
                 <ol class="run-list">
                   <li class="run-row">
-                    <span class="run-dur">5 min</span>
                     <span class="run-body"><b>Introduction</b> — what editing is, and why it matters before any tool
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">7 min</span>
                     <span class="run-body"><b>Understanding the shot</b> — wide, medium and close-up, B-roll, and how
                       shot selection shapes meaning
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">10 min</span>
                     <span class="run-body"><b>The art of the cut</b> — when and why to cut — continuity, jump cuts,
                       cutting on action, match cuts
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">8 min</span>
                     <span class="run-body"><b>Pacing &amp; rhythm</b> — fast vs slow, beat-based cuts, anticipation,
                       energy and pauses
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">7 min</span>
                     <span class="run-body"><b>Sound &amp; emotion</b> — music, sound effects, ambience, dialogue and
                       silence
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">5 min</span>
                     <span class="run-body"><b>Visual mood</b> — exposure, contrast and consistency — correction for the
                       story, not filters
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">13 min</span>
                     <span class="run-body"><b>Live CapCut edit</b> — timeline, split/trim, speed, keyframes, text,
                       captions, transitions, export
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">5 min</span>
                     <span class="run-body"><b>Wrap-up</b> — the key principles and where to practise them next
                     </span>
                   </li>
@@ -2084,36 +2060,30 @@
                   <b>Run of show — what we cover</b>
                   <span>60 MIN · 3:30 → 4:30 PM</span>
                 </div>
-                <p class="run-lede">This hour is a live demonstration of Resolve's basic tools, page by page. Each block
-                  is shown hands-on and timed — here's the route through the software and how long it takes.</p>
+                <p class="run-lede">This hour is a live demonstration of Resolve's basic tools, page by page. Each page
+                  is shown hands-on — here's the route through the software.</p>
                 <ol class="run-list">
                   <li class="run-row">
-                    <span class="run-dur">10 min</span>
                     <span class="run-body"><b>Media + Cut pages</b> — import, sort into bins, rough assembly
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">15 min</span>
                     <span class="run-body"><b>Edit page</b> — trims, keyframes, titles
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">7 min</span>
                     <span class="run-body"><b>Fusion page</b> — a simple motion graphic
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">18 min</span>
                     <span class="run-body"><b>Color page</b> — balance, curves, nodes, the filmic grade
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">6 min</span>
                     <span class="run-body"><b>Fairlight page</b> — dialogue levels and music
                     </span>
                   </li>
                   <li class="run-row">
-                    <span class="run-dur">4 min</span>
                     <span class="run-body"><b>Deliver page</b> — render presets
                     </span>
                   </li>
@@ -2248,20 +2218,6 @@
         sync();
       });
 
-      // RSVP form
-      var form = document.getElementById('rsvpForm');
-      if (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          var email = form.email.value.trim();
-          if (!/^\S+@\S+\.\S+$/.test(email)) { form.email.focus(); return; }
-          var box = document.createElement('div');
-          box.className = 'rsvp-done';
-          box.setAttribute('role', 'status');
-          box.innerHTML = '<b>Seat held</b>We\'ll send the room number and prep checklist to ' + email.replace(/[<>&]/g, '') + ' before Oct 7.';
-          form.replaceWith(box);
-        });
-      }
     })();
   </script>
 </body>
