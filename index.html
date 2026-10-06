@@ -278,12 +278,27 @@
       color: #3a252a;
     }
 
+    .hero-media {
+      display: grid;
+      gap: clamp(18px, 2.5vw, 28px);
+      margin-top: 36px;
+      min-width: 0;
+    }
+
     .hero-image {
       display: block;
       width: 100%;
       height: auto;
-      margin-top: 36px;
       border-radius: 8px;
+    }
+
+    .contest-promo {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--stage-rule);
+      overflow: hidden;
     }
 
     .facts {
@@ -1002,6 +1017,49 @@
       font-weight: 700
     }
 
+    .contest-section {
+      background: var(--tint);
+      border-top: 1px solid var(--tint-rule);
+      border-bottom: 1px solid var(--tint-rule);
+    }
+
+    .contest-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      align-items: center;
+      gap: clamp(24px, 4vw, 52px);
+    }
+
+    .contest-copy .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .contest-copy p {
+      margin-top: 16px;
+      max-width: 48ch;
+      color: var(--muted);
+    }
+
+    .contest-copy .contest-note {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .contest-artwork {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--stage-rule);
+      border-radius: 10px;
+      box-shadow: 0 12px 28px rgba(50, 20, 28, .12);
+    }
+
     /* ---------- schedule details ---------- */
     .acc {
       margin-top: 28px;
@@ -1638,6 +1696,10 @@
         padding: 24px 22px
       }
 
+      .contest-grid {
+        grid-template-columns: 1fr;
+      }
+
       .mbar {
         display: flex
       }
@@ -1707,6 +1769,7 @@
       <nav class="nav-links" aria-label="Page sections">
         <a href="#timeline">Timeline</a>
         <a href="#learn">What you'll learn</a>
+        <a href="#contest">Contest</a>
         <a href="#schedule">Daily plan</a>
         <a href="#details">Details</a>
       </nav>
@@ -1748,11 +1811,16 @@
             </div>
             <figcaption class="shot-note">Workshop image · 16:9</figcaption>
           </figure> -->
-          <img class="hero-image" src="webinarposterfinal-700.webp"
-            srcset="webinarposterfinal-700.webp 700w, webinarposterfinal-1400.webp 1400w"
-            sizes="(max-width: 960px) calc(100vw - 44px), (max-width: 1224px) calc(100vw - 440px), 740px"
-            width="1400" height="804" alt="Poster for the three-day Photoshop, CapCut and DaVinci Resolve workshop"
-            fetchpriority="high" decoding="async">
+          <div class="hero-media">
+            <img class="hero-image" src="webinarposterfinal-700.webp"
+              srcset="webinarposterfinal-700.webp 700w, webinarposterfinal-1400.webp 1400w"
+              sizes="(max-width: 960px) calc(100vw - 44px), (max-width: 1224px) calc(100vw - 440px), 740px"
+              width="1400" height="804" alt="Poster for the three-day Photoshop, CapCut and DaVinci Resolve workshop"
+              fetchpriority="high" decoding="async">
+            <img class="contest-promo" src="contest-announcement.svg" width="1400" height="800"
+              alt="After the workshop, join the editing contest for a chance to win exciting prize money. The winner will be announced after the contest."
+              loading="lazy" decoding="async">
+          </div>
         </div>
 
         <!-- enrollment card -->
@@ -1884,6 +1952,21 @@
               </svg><span>Build a repeatable <b>editing workflow</b> you can finish inside one hour</span></li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- POST-WORKSHOP CONTEST -->
+    <section class="section contest-section" id="contest" aria-labelledby="contest-title">
+      <div class="wrap contest-grid">
+        <div class="contest-copy">
+          <span class="eyebrow">After the workshop</span>
+          <h2 id="contest-title">Put your new editing skills to the test</h2>
+          <p>We’ll hold a creative contest after the workshop. Bring together what you learn in Photoshop, CapCut, or DaVinci Resolve and enter for a chance to win exciting prize money.</p>
+          <p class="contest-note">The contest has not been held yet, so the winner will be announced after it takes place.</p>
+        </div>
+        <img class="contest-artwork" src="contest-announcement.svg" width="1400" height="800"
+          alt="After the workshop, join the editing contest for a chance to win exciting prize money. The winner will be announced after the contest."
+          loading="lazy" decoding="async">
       </div>
     </section>
 

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" role="img" aria-labelledby="title desc">
+  <title id="title">Workshop contest announcement</title>
+  <desc id="desc">A contest will follow the editing workshop. The winner will receive exciting prize money. Winner to be announced after the contest.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#5c0719"/><stop offset=".55" stop-color="#890c25"/><stop offset="1" stop-color="#32141c"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fffdfc"/><stop offset="1" stop-color="#f0d9de"/>
+    </linearGradient>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="2" fill="#fff" opacity=".12"/>
+    </pattern>
+  </defs>
+  <rect width="1400" height="800" rx="28" fill="url(#bg)"/>
+  <rect width="1400" height="800" rx="28" fill="url(#dots)"/>
+  <path d="M0 590 Q350 490 700 620 T1400 550 V800 H0Z" fill="#260810" opacity=".48"/>
+  <g fill="none" stroke="#d08a99" stroke-width="9" stroke-linecap="round" opacity=".9">
+    <path d="M104 118c-38 41 45 67 0 109s-18 67 15 82"/><path d="M1288 114c38 41-45 67 0 109s18 67-15 82"/>
+    <path d="M164 653c-31 31 31 53 0 84"/><path d="M1238 646c31 31-31 53 0 84"/>
+  </g>
+  <g fill="#f0d9de" opacity=".95">
+    <path d="m272 143 18 36-31-22z"/><path d="m1122 167 15-39 13 35z"/>
+    <path d="m203 466 16 31-28-15z"/><path d="m1191 455 24-30-4 39z"/>
+    <circle cx="1170" cy="315" r="8"/><circle cx="244" cy="304" r="6"/>
+  </g>
+  <rect x="452" y="82" width="496" height="54" rx="27" fill="#fffdfc" opacity=".13" stroke="#d08a99" stroke-width="2"/>
+  <text x="700" y="118" text-anchor="middle" fill="#f0d9de" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" letter-spacing="5">AFTER THE WORKSHOP</text>
+  <text x="700" y="230" text-anchor="middle" fill="url(#shine)" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="800" letter-spacing="1">SHOW US WHAT YOU CAN MAKE</text>
+  <text x="700" y="332" text-anchor="middle" fill="#f0d9de" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="800" letter-spacing="2">CONTEST</text>
+  <rect x="210" y="382" width="980" height="142" rx="18" fill="#fffdfc"/>
+  <text x="700" y="438" text-anchor="middle" fill="#32141c" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Join the contest after the editing workshop</text>
+  <text x="700" y="485" text-anchor="middle" fill="#775e66" font-family="Arial, Helvetica, sans-serif" font-size="26">Create with your new skills for a chance to win</text>
+  <g transform="translate(700 680) scale(.68)">
+    <path d="M-48-31h96l-10 87q-38 36-76 0z" fill="#d08a99" stroke="#fffdfc" stroke-width="6"/>
+    <path d="M-48-18h-37v26q4 36 42 36M48-18h37v26q-4 36-42 36" fill="none" stroke="#f0d9de" stroke-width="12" stroke-linecap="round"/>
+    <path d="M0-117v-18m-57 40-13-14m127 14 13-14" stroke="#f0d9de" stroke-width="8" stroke-linecap="round"/>
+    <path d="m0-107 14 29 32 5-23 22 6 31L0-35l-29 15 6-31-23-22 32-5z" fill="#fffdfc"/>
+  </g>
+  <text x="700" y="780" text-anchor="middle" fill="#fffdfc" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" letter-spacing="1">EXCITING PRIZE MONEY · WINNER ANNOUNCED AFTER THE CONTEST</text>
+</svg>
